@@ -1,0 +1,68 @@
+📄 Mefta Sadat Resume
+
+Mefta Sadat
+
+LinkedIn: https://www.linkedin.com/in/meftasadat
+Email: meftasadat@gmail.com
+Phone: +1 647 745 8961
+Github: meftasadat/
+Last Updated: 27th October 2025
+
+🎓 EDUCATION
+TORONTO METROPOLITAN UNIVERSITY (TMU)
+MSc in Computer Science
+Sept 2015 - May 2017
+Toronto, ON, Canada
+
+🛠️ SKILLS
+PROGRAMMING: Python, Java
+AGENTIC: LangGraph, LangFuse, MCP AG-UI, Chat UI, ChatGPT Apps SDK, LiteLLM, Qdrant
+TOOLING:
+Databases: MySQL, Postgres, Firestore, Big Table
+Big Data: Apache Beam (Dataflow), Spark, BigQuery, Kafka, PubSub
+Others: Apache Airflow , Seldon, Vertex AI, GitLab, Docker, Kubernetes, Linux OS, Shell Scripting, Automated Deployments CI/CD
+
+💼 EXPERIENCE
+LOBLAW DIGITAL | STAFF SOFTWARE ENGINEER
+Aug 2018 - Present | Toronto, Canada
+
+2025 Q3: Built LD Internal Agent Orchestration Engine Alfred that is being used to deploy 10+ conversational agentic use cases. Alfred uses open source stack like LangGraph, LangFuse, LiteLLM, Gradio, and MCP servers.
+
+2025 Q1: Designed and deployed LLM-powered features, incorporating LLMOps principles. Built batch prediction, monitoring, and orchestration capable of processing 15 million prompts weekly, utilizing Qdrant for vector search, Vertex AI for ML infrastructure and Airflow for task orchestration.
+
+2022 Q1: Built LD's MLOps platform by using tools such as Kubernetes, Vertex AI, Seldon, Prometheus, and Grafana to help data scientists go from EDA to model serving in production quickly. Built a Recommendation Engine using this platform to replace a 3rd party tool called Kibo that will save more than $200k per year on subscription fees.
+
+ZONETV | ML SOFTWARE ENGINEER
+June 2017 - Aug 2018 | Toronto, Canada
+
+Built Zone TV's Machine Learning model-serving and re-training infrastructure using Hybrid multi-cloud platform (AWS and Azure).
+
+Built a scalable Recommendation System using Azure Machine Learning and Apache Spark on AWS EMR that is deployed in production. Microsoft Featured this as a successful customer story.
+
+Developed RESTful ML model serving applications using AWS Lambda and API Gateway (leveraging Chalice Framework) and EC2 serving multiple clients like TIVO, Virgin Media UK.
+
+IBM-CAS | GRADUATE STUDENT RESEARCHER
+Sept 2015 - Dec 2016 | Toronto, Canada
+
+Extracted and analyzed log data of the users of IBM Watson Analytics using Python and ElasticSearch to improve the ranking of the data visualizations in IBM Watson Analytics.
+
+🔬 RESEARCH
+RYERSON DATA SCIENCE LAB | RESEARCH ASSISTANT
+Sep 2015 - May 2017 | Toronto, Canada
+
+Implemented machine learning techniques such as recommender systems and probabilistic classifiers to predict defect rediscovery in commercial and open source software projects with Dr. Andriy Miranskyy and Dr. Ayse Bener.
+
+Received nomination for the Governor General Award (for Grad Students) from the Computer Science Department.
+
+📢 PUBLIC TALKS
+MLOpsWorld Conference, June 2022
+MLOps Community Talk, Dec 2021
+MLOpsWorld Conference, June 2021
+
+📚 PUBLICATIONS
+[1] Mefta Sadat, Ayse Basar Bener and Andriy V. Miranskyy. "Rediscovery Datasets: Connecting Duplicate Reports". In: Proceedings of the 14th International Conference on Mining Software Repositories (MSR 2017). 2017.
+
+[2] Mefta Sadat, Ayse Basar Bener and Andriy V. Miranskyy. Rediscovery Datasets: Connecting Duplicate Reports of Apache, Eclipse, and KDE (Downloaded more than 500 times). Mar. 2017.
+
+💻 PET PROJECTS
+Similar Items API (meftasadat/similar-items-api)
