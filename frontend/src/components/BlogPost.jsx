@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 import './BlogPost.css'
-
-const API_BASE_URL = 'http://localhost:8001/api'
+import { API_BASE_URL } from '../lib/api'
 
 function BlogPost() {
   const { slug } = useParams()
@@ -33,20 +32,6 @@ function BlogPost() {
       month: 'long',
       day: 'numeric'
     })
-  }
-
-  const renderMarkdown = (content) => {
-    // Simple markdown renderer - converts basic markdown to HTML
-    return content
-      .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-      .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-      .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-      .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
-      .replace(/\*(.*)\*/gim, '<em>$1</em>')
-      .replace(/`([^`]+)`/gim, '<code>$1</code>')
-      .replace(/```([^```]+)```/gim, '<pre><code>$1</code></pre>')
-      .replace(/\n\n/gim, '</p><p>')
-      .replace(/\n/gim, '<br>')
   }
 
   if (loading) {
@@ -85,15 +70,17 @@ function BlogPost() {
 
         <h1 className="blog-post-title">{post.title}</h1>
 
-        <div className="blog-post-tags">
-          {post.tags.map((tag) => (
-            <span key={tag} className="blog-post-tag">{tag}</span>
-          ))}
-        </div>
+        {post.tags && post.tags.length > 0 && (
+          <div className="blog-post-tags">
+            {post.tags.map((tag) => (
+              <span key={tag} className="blog-post-tag">{tag}</span>
+            ))}
+          </div>
+        )}
 
         <div
           className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: `<p>${renderMarkdown(post.content)}</p>` }}
+          dangerouslySetInnerHTML={{ __html: post.content_html || post.content }}
         />
       </div>
     </article>

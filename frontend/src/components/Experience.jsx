@@ -10,40 +10,6 @@ function Experience({ data }) {
     })
   }
 
-  const renderDescription = (description) => {
-    // Split by lines and process each line
-    const lines = description.split('\n').filter(line => line.trim());
-
-    return lines.map((line, index) => {
-      const trimmedLine = line.trim();
-
-      // Handle bullet points (lines starting with specific patterns)
-      if (trimmedLine.startsWith('2025') || trimmedLine.startsWith('2022') || trimmedLine.startsWith('Built') || trimmedLine.startsWith('Developed') || trimmedLine.startsWith('Implemented') || trimmedLine.startsWith('Received')) {
-        return (
-          <li key={index} className="experience-bullet">
-            {trimmedLine}
-          </li>
-        );
-      }
-
-      // Handle section headers
-      if (trimmedLine.includes(':')) {
-        return (
-          <div key={index} className="experience-section">
-            {trimmedLine}
-          </div>
-        );
-      }
-
-      // Regular paragraphs
-      return (
-        <p key={index} className="experience-description">
-          {trimmedLine}
-        </p>
-      );
-    });
-  };
-
   return (
     <section className="experience" id="experience">
       <div className="container">
@@ -62,9 +28,10 @@ function Experience({ data }) {
               </div>
 
               <div className="experience-content">
-                <ul className="experience-description-list">
-                  {renderDescription(exp.description)}
-                </ul>
+                <div
+                  className="experience-description rich-text"
+                  dangerouslySetInnerHTML={{ __html: exp.description_html || exp.description }}
+                />
 
                 {exp.technologies && exp.technologies.length > 0 && (
                   <div className="experience-tech-section">

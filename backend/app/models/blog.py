@@ -12,6 +12,7 @@ class BlogPost(BaseModel):
     title: str = Field(..., description="Post title")
     slug: str = Field(..., description="URL-friendly slug")
     content: str = Field(..., description="Post content (HTML/markdown)")
+    content_html: str = Field(..., description="Rendered HTML content")
     excerpt: str = Field(..., description="Post excerpt/summary")
     author: str = Field(..., description="Post author")
     published_at: datetime = Field(..., description="Publication date")

@@ -66,47 +66,25 @@
   padding: 2rem;
 }
 
-.experience-description-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem 0;
-}
-
-.experience-bullet {
-  position: relative;
-  padding: 0.75rem 0 0.75rem 2rem;
-  color: var(--text-color);
-  line-height: 1.6;
-  border-left: 3px solid var(--primary-color);
-  margin-bottom: 0.5rem;
-  background: var(--bg-light);
-  padding-left: 2.5rem;
-}
-
-.experience-bullet::before {
-  content: '▹';
-  position: absolute;
-  left: 0.5rem;
-  top: 0.75rem;
-  color: var(--primary-color);
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.experience-section {
-  font-weight: 600;
-  color: var(--primary-dark);
-  margin: 1.5rem 0 0.5rem 0;
-  font-size: 1.1rem;
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 0.25rem;
-  display: inline-block;
-}
-
 .experience-description {
   color: var(--text-light);
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.experience-description.rich-text ul,
+.experience-description.rich-text ol {
+  margin: 1rem 0 1rem 1.25rem;
+  padding-left: 1rem;
+}
+
+.experience-description.rich-text li {
+  margin-bottom: 0.5rem;
+}
+
+.experience-description.rich-text h4 {
+  margin-top: 1.25rem;
+  color: var(--text-color);
 }
 
 .experience-tech-section {

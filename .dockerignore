@@ -1,0 +1,23 @@
+.git
+.gitignore
+.github
+frontend/node_modules
+frontend/dist
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+*.swp
+*.DS_Store
+
+# IDE
+.idea
+.vscode
+
+# Tests/artifacts
+coverage
+dist
+build

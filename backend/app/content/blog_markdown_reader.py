@@ -2,11 +2,14 @@
 Markdown content reader for blog posts.
 Parses YAML frontmatter and markdown content from blog post files.
 """
-import yaml
-import os
 from datetime import datetime
-from typing import List, Dict, Any
+from typing import Any, Dict, List
+
+import yaml
+
 from ..models.blog import BlogPost
+from ..services.content_repository import ContentRepository
+from ..services.markdown_renderer import render_markdown
 
 
 class BlogMarkdownReader:
@@ -19,7 +22,6 @@ class BlogMarkdownReader:
             return {}, content
 
         try:
-            # Find the end of frontmatter
             end_idx = content.find('---', 3)
             if end_idx == -1:
                 return {}, content
@@ -27,7 +29,6 @@ class BlogMarkdownReader:
             frontmatter_str = content[3:end_idx].strip()
             body = content[end_idx + 3:].strip()
 
-            # Parse YAML
             frontmatter = yaml.safe_load(frontmatter_str) or {}
 
             return frontmatter, body
@@ -35,30 +36,27 @@ class BlogMarkdownReader:
             return {}, content
 
     @staticmethod
-    def read_blog_post(filepath: str) -> BlogPost:
-        """Read and parse a blog post markdown file."""
-        frontmatter, content = BlogMarkdownReader.parse_frontmatter(open(filepath, 'r', encoding='utf-8').read())
+    def read_blog_post(repository: ContentRepository, relative_path: str) -> BlogPost:
+        """Read and parse a blog post markdown file via the repository."""
+        content = repository.read_text(relative_path)
+        frontmatter, body = BlogMarkdownReader.parse_frontmatter(content)
 
-        # Parse datetime
-        published_at = frontmatter.get('published_at')
-        if isinstance(published_at, str):
-            published_at = datetime.fromisoformat(published_at.replace('Z', '+00:00'))
-        elif not isinstance(published_at, datetime):
-            published_at = datetime.now()
+        published_at = BlogMarkdownReader._parse_datetime(
+            frontmatter.get('published_at')
+        )
+        updated_at = BlogMarkdownReader._parse_datetime(
+            frontmatter.get('updated_at'), allow_none=True
+        )
 
-        # Parse updated_at if present
-        updated_at = frontmatter.get('updated_at')
-        if updated_at and isinstance(updated_at, str):
-            updated_at = datetime.fromisoformat(updated_at.replace('Z', '+00:00'))
-        elif not isinstance(updated_at, datetime):
-            updated_at = None
+        raw_excerpt = frontmatter.get('excerpt') or BlogMarkdownReader._build_excerpt(body)
 
         return BlogPost(
             id=frontmatter.get('id', ''),
             title=frontmatter.get('title', ''),
             slug=frontmatter.get('slug', ''),
-            content=content,
-            excerpt=frontmatter.get('excerpt', ''),
+            content=body,
+            content_html=render_markdown(body),
+            excerpt=raw_excerpt,
             author=frontmatter.get('author', ''),
             published_at=published_at,
             updated_at=updated_at,
@@ -68,23 +66,37 @@ class BlogMarkdownReader:
         )
 
     @staticmethod
-    def load_blog_posts(blog_dir: str) -> List[BlogPost]:
+    def load_blog_posts(repository: ContentRepository, blog_dir: str = "blogs") -> List[BlogPost]:
         """Load all blog posts from markdown files in the directory."""
-        posts = []
+        posts: List[BlogPost] = []
+        filenames = repository.list_markdown_files(blog_dir)
 
-        if not os.path.exists(blog_dir):
-            return posts
+        for filename in filenames:
+            if not filename.endswith(".md"):
+                continue
+            relative_path = "/".join([blog_dir.rstrip("/"), filename])
+            try:
+                post = BlogMarkdownReader.read_blog_post(repository, relative_path)
+                posts.append(post)
+            except Exception as exc:  # noqa: BLE001 - log and continue
+                print(f"Error reading blog post {filename}: {exc}")
 
-        for filename in os.listdir(blog_dir):
-            if filename.endswith('.md'):
-                filepath = os.path.join(blog_dir, filename)
-                try:
-                    post = BlogMarkdownReader.read_blog_post(filepath)
-                    posts.append(post)
-                except Exception as e:
-                    print(f"Error reading blog post {filename}: {e}")
-
-        # Sort by publication date (newest first)
         posts.sort(key=lambda x: x.published_at, reverse=True)
-
         return posts
+
+    @staticmethod
+    def _parse_datetime(value: Any, allow_none: bool = False) -> datetime | None:
+        if value is None and allow_none:
+            return None
+        if isinstance(value, datetime):
+            return value
+        if isinstance(value, str):
+            return datetime.fromisoformat(value.replace('Z', '+00:00'))
+        if allow_none:
+            return None
+        return datetime.now()
+
+    @staticmethod
+    def _build_excerpt(body: str, max_chars: int = 240) -> str:
+        clean_text = body.strip().split("\n\n")[0]
+        return clean_text[:max_chars].rstrip() + ("..." if len(clean_text) > max_chars else "")

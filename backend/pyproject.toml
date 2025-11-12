@@ -8,6 +8,10 @@ dependencies = [
     "uvicorn[standard]",
     "python-multipart",
     "pyyaml",
+    "httpx",
+    "markdown-it-py",
+    "mdit-py-plugins",
+    "bleach",
 ]
 
 [tool.hatch.build.targets.wheel]

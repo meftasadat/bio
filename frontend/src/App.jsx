@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import axios from 'axios'
 import './App.css'
 
@@ -11,15 +11,15 @@ import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Blog from './components/Blog'
 import BlogPost from './components/BlogPost'
+import Talks from './components/Talks'
+import Publications from './components/Publications'
 import Contact from './components/Contact'
-
-const API_BASE_URL = 'http://localhost:8001/api'
+import { API_BASE_URL } from './lib/api'
 
 function App() {
   const [portfolioData, setPortfolioData] = useState(null)
   const [blogPosts, setBlogPosts] = useState([])
   const [loading, setLoading] = useState(true)
-  const location = useLocation()
 
   useEffect(() => {
     fetchPortfolioData()
@@ -68,12 +68,16 @@ function App() {
 
               <Experience data={portfolioData?.experience} />
               <Blog posts={blogPosts.slice(0, 3)} />
+              <Talks data={portfolioData?.talks} />
+              <Publications data={portfolioData?.publications} />
               <Contact data={portfolioData?.contact} />
             </>
           } />
           <Route path="/about" element={<About data={portfolioData} />} />
 
           <Route path="/experience" element={<Experience data={portfolioData?.experience} />} />
+          <Route path="/talks" element={<Talks data={portfolioData?.talks} />} />
+          <Route path="/publications" element={<Publications data={portfolioData?.publications} />} />
           <Route path="/blog" element={<Blog posts={blogPosts} />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<Contact data={portfolioData?.contact} />} />

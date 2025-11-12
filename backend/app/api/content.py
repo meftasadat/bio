@@ -1,19 +1,16 @@
-from fastapi import APIRouter, HTTPException
-import os
+from fastapi import APIRouter, Header, HTTPException
+
 from ..content.markdown_reader import MarkdownReader
+from ..core.config import get_settings
+from ..services.content_store import content_repository
 
 router = APIRouter()
+settings = get_settings()
 
-# Cache the bio data to avoid re-reading files on every request
-_bio_data = None
 
 def get_bio_data():
-    """Get bio data, loading from markdown files if not cached."""
-    global _bio_data
-    if _bio_data is None:
-        markdown_dir = os.path.join(os.path.dirname(__file__), '..', 'content', 'markdown')
-        _bio_data = MarkdownReader.load_bio_data(markdown_dir)
-    return _bio_data
+    """Load the bio data using the shared content repository."""
+    return MarkdownReader.load_bio_data(content_repository)
 
 @router.get("/")
 async def get_content():
@@ -49,3 +46,27 @@ async def get_education():
     """Get education history."""
     bio_data = get_bio_data()
     return {"education": bio_data.education}
+
+
+@router.get("/talks")
+async def get_talks():
+    """Get public talks."""
+    bio_data = get_bio_data()
+    return {"talks": bio_data.talks}
+
+
+@router.get("/publications")
+async def get_publications():
+    """Get publications."""
+    bio_data = get_bio_data()
+    return {"publications": bio_data.publications}
+
+
+@router.post("/reload", status_code=204)
+async def reload_content(x_reload_token: str | None = Header(default=None)):
+    """Clear cached markdown (requires CONTENT_RELOAD_TOKEN)."""
+    if not settings.reload_token:
+        raise HTTPException(status_code=404, detail="Reload endpoint not configured")
+    if x_reload_token != settings.reload_token:
+        raise HTTPException(status_code=403, detail="Invalid reload token")
+    content_repository.clear_cache()

@@ -8,6 +8,8 @@ function Header() {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/experience', label: 'Experience' },
+    { path: '/talks', label: 'Talks' },
+    { path: '/publications', label: 'Publications' },
     { path: '/blog', label: 'Blog' },
     { path: '/contact', label: 'Contact' }
   ]

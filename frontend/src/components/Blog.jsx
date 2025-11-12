@@ -28,11 +28,13 @@ function Blog({ posts }) {
               </div>
               <h3 className="blog-title">{post.title}</h3>
               <p className="blog-excerpt">{post.excerpt}</p>
-              <div className="blog-tags">
-                {post.tags.slice(0, 3).map((tag) => (
-                  <span key={tag} className="blog-tag">{tag}</span>
-                ))}
-              </div>
+              {post.tags && post.tags.length > 0 && (
+                <div className="blog-tags">
+                  {post.tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="blog-tag">{tag}</span>
+                  ))}
+                </div>
+              )}
               <Link to={`/blog/${post.slug}`} className="read-more">
                 Read More →
               </Link>
