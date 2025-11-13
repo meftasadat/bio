@@ -11,10 +11,7 @@ FROM python:3.13-slim AS backend
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Install system dependencies that may be needed
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
