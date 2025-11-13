@@ -85,12 +85,19 @@ Or with Podman:
 ./run-podman.sh
 ```
 
+Published images on GHCR are multi-architecture (`linux/amd64` + `linux/arm64`), so you can pull and run them on Intel/AMD servers or Apple Silicon Macs without emulation:
+
+```bash
+docker pull ghcr.io/<your-gh-username-or-org>/bio:latest
+docker run --rm -p 8000:8000 ghcr.io/<your-gh-username-or-org>/bio:latest
+```
+
 Cloud Run will inject `$PORT`; the container entrypoint already respects it.
 
 ### GitHub Actions / GHCR
 The workflow in `.github/workflows/container.yml`:
 - Logs in to GHCR.
-- Builds the container with Buildx.
+- Builds the container with Buildx (multi-arch manifest pushed on non-PR builds).
 - Pushes tags `ghcr.io/<owner>/bio:latest` and `ghcr.io/<owner>/bio:<sha>` (skips pushing on PRs).
 
 Set Cloud Run (or your orchestrator) to pull from GHCR with the token of your choice.
