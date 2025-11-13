@@ -9,7 +9,6 @@ import yaml
 
 from ..models.portfolio import (
     Bio,
-    Contact,
     Education,
     Experience,
     Talk,
@@ -62,12 +61,6 @@ class MarkdownReader:
             repository, "bio.md"
         )
 
-        contact_frontmatter, _ = MarkdownReader.read_markdown_from_repository(
-            repository, "contact.md"
-        )
-
-
-
         experience_frontmatter, _ = MarkdownReader.read_markdown_from_repository(
             repository, "experience.md"
         )
@@ -83,16 +76,6 @@ class MarkdownReader:
         publications_frontmatter, _ = MarkdownReader.read_markdown_from_repository(
             repository, "publications.md"
         )
-
-        # Create contact object
-        contact = Contact(
-            email=contact_frontmatter.get('email', ''),
-            linkedin=contact_frontmatter.get('linkedin', ''),
-            github=contact_frontmatter.get('github', ''),
-            location=contact_frontmatter.get('location', '')
-        )
-
-
 
         # Create experience objects
         experiences = []
@@ -190,7 +173,6 @@ class MarkdownReader:
             title=bio_frontmatter.get('title', ''),
             summary=bio_frontmatter.get('summary', ''),
             about=bio_content,
-            contact=contact,
             experience=experiences,
             education=educations,
             talks=talks,

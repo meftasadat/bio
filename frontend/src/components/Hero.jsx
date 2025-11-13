@@ -13,7 +13,6 @@ function Hero({ data }) {
         <p className="hero-description">{data.summary}</p>
         <div className="hero-actions">
           <a href="#talks" className="btn btn-primary">Watch My Talks</a>
-          <a href="#contact" className="btn btn-secondary">Get In Touch</a>
         </div>
       </div>
       <div className="hero-image">

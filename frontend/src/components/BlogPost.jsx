@@ -19,6 +19,10 @@ function BlogPost() {
       const response = await axios.get(`${API_BASE_URL}/blog/slug/${slug}`)
       setPost(response.data)
       setLoading(false)
+      // Redirect to Medium after a short delay
+      setTimeout(() => {
+        window.open(post.medium_url, '_blank', 'noopener,noreferrer')
+      }, 2000)
     } catch (error) {
       console.error('Error fetching blog post:', error)
       setError('Blog post not found')
@@ -70,6 +74,14 @@ function BlogPost() {
 
         <h1 className="blog-post-title">{post.title}</h1>
 
+        {post.thumbnail_url && (
+          <div className="blog-post-thumbnail">
+            <img src={post.thumbnail_url} alt={post.title} />
+          </div>
+        )}
+
+        <p className="blog-post-excerpt">{post.excerpt}</p>
+
         {post.tags && post.tags.length > 0 && (
           <div className="blog-post-tags">
             {post.tags.map((tag) => (
@@ -78,10 +90,10 @@ function BlogPost() {
           </div>
         )}
 
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: post.content_html || post.content }}
-        />
+        <div className="blog-post-redirect">
+          <p>Redirecting you to the full article on Medium...</p>
+          <p>If you are not redirected automatically, <a href={post.medium_url} target="_blank" rel="noopener noreferrer">click here</a>.</p>
+        </div>
       </div>
     </article>
   )

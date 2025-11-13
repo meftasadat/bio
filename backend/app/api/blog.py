@@ -1,15 +1,14 @@
 from fastapi import APIRouter, HTTPException, Query
 from typing import Optional
 
-from ..content.blog_markdown_reader import BlogMarkdownReader
-from ..services.content_store import content_repository
+from ..services.medium_scraper import MediumScraper
 
 router = APIRouter()
 
 
 def load_blog_posts():
-    """Load blog posts from the shared repository."""
-    return BlogMarkdownReader.load_blog_posts(content_repository)
+    """Load blog posts from Medium."""
+    return MediumScraper.get_medium_posts()
 
 @router.get("/")
 async def get_blog_posts_api(

@@ -25,8 +25,7 @@ async def get_bio():
         "name": bio_data.name,
         "title": bio_data.title,
         "summary": bio_data.summary,
-        "about": bio_data.about,
-        "contact": bio_data.contact
+        "about": bio_data.about
     }
 
 

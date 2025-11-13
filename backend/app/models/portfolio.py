@@ -61,22 +61,12 @@ class Publication(BaseModel):
     summary_html: Optional[str] = Field(None, description="Rendered HTML summary")
 
 
-class Contact(BaseModel):
-    """Contact information model."""
-    email: str = Field(..., description="Email address")
-    linkedin: Optional[str] = Field(None, description="LinkedIn profile URL")
-    github: Optional[str] = Field(None, description="GitHub profile URL")
-    twitter: Optional[str] = Field(None, description="Twitter profile URL")
-    location: str = Field(..., description="Location")
-
-
 class Bio(BaseModel):
     """Bio/About information model."""
     name: str = Field(..., description="Full name")
     title: str = Field(..., description="Professional title")
     summary: str = Field(..., description="Professional summary")
     about: str = Field(..., description="Detailed about section")
-    contact: Contact = Field(..., description="Contact information")
     experience: List[Experience] = Field(default_factory=list, description="Work experience")
     education: List[Education] = Field(default_factory=list, description="Education history")
     talks: List[Talk] = Field(default_factory=list, description="Public speaking engagements")

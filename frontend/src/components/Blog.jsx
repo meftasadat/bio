@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import './Blog.css'
 
 function Blog({ posts }) {
@@ -17,11 +16,16 @@ function Blog({ posts }) {
       <div className="container">
         <div className="blog-header">
           <h2 className="section-title">Latest Blog Posts</h2>
-          <Link to="/blog" className="view-all-link">View All Posts →</Link>
+          <a href="#blog" className="view-all-link">View All Posts →</a>
         </div>
         <div className="blog-grid">
           {posts.map((post) => (
             <article key={post.id} className="blog-card">
+              {post.thumbnail_url && (
+                <div className="blog-thumbnail">
+                  <img src={post.thumbnail_url} alt={post.title} />
+                </div>
+              )}
               <div className="blog-meta">
                 <span className="blog-date">{formatDate(post.published_at)}</span>
                 <span className="blog-author">by {post.author}</span>
@@ -35,9 +39,9 @@ function Blog({ posts }) {
                   ))}
                 </div>
               )}
-              <Link to={`/blog/${post.slug}`} className="read-more">
-                Read More →
-              </Link>
+              <a href={post.medium_url} target="_blank" rel="noopener noreferrer" className="read-more">
+                Read on Medium →
+              </a>
             </article>
           ))}
         </div>

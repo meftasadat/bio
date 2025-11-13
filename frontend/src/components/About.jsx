@@ -31,44 +31,7 @@ function About({ data }) {
               {renderAboutText(data.about)}
             </div>
 
-            <div className="about-highlights">
-              <div className="highlight-item">
-                <div className="highlight-icon">📍</div>
-                <div className="highlight-content">
-                  <strong>Location</strong>
-                  <span>{data.contact.location}</span>
-                </div>
-              </div>
-              <div className="highlight-item">
-                <div className="highlight-icon">📧</div>
-                <div className="highlight-content">
-                  <strong>Email</strong>
-                  <span>{data.contact.email}</span>
-                </div>
-              </div>
-              {data.contact.linkedin && (
-                <div className="highlight-item">
-                  <div className="highlight-icon">💼</div>
-                  <div className="highlight-content">
-                    <strong>LinkedIn</strong>
-                    <a href={data.contact.linkedin} target="_blank" rel="noopener noreferrer">
-                      View Profile →
-                    </a>
-                  </div>
-                </div>
-              )}
-              {data.contact.github && (
-                <div className="highlight-item">
-                  <div className="highlight-icon">💻</div>
-                  <div className="highlight-content">
-                    <strong>GitHub</strong>
-                    <a href={data.contact.github} target="_blank" rel="noopener noreferrer">
-                      View Code →
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
+
           </div>
 
           <div className="about-sidebar">
