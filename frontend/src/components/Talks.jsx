@@ -67,11 +67,6 @@ function Talks({ data }) {
                   </div>
                 )}
                 <div className="talk-links">
-                  {talk.link && (
-                    <a href={talk.link} target="_blank" rel="noopener noreferrer">
-                      Event Details →
-                    </a>
-                  )}
                   {talk.video_url && (
                     <a href={talk.video_url} target="_blank" rel="noopener noreferrer">
                       Watch on YouTube →

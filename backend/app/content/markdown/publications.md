@@ -1,30 +1,5 @@
 ---
-publications:
-  - id: iccit-2014-affection
-    title: "Recognition of human affection in smartphone perspective based on accelerometer and user's sitting position"
-    venue: "2014 17th International Conference on Computer and Information Technology (ICCIT)"
-    date: 2014-12-22
-    authors:
-      - Rasam Bin Hossain
-      - Mefta Sadat
-      - Hasan Mahmud
-    pages: "87-91"
-    publisher: IEEE
-    summary: >
-      Research on recognizing human affection using smartphone sensors and accelerometer data.
-
-  - id: gjcst-2014-affection
-    title: "Recognizing human affection: Smartphone perspective"
-    venue: "Global Journal of Computer Science and Technology, Islamic University of Technology, Bangladesh"
-    date: 2014-01-01
-    authors:
-      - Mefta Sadat
-      - Rasam Bin Hossain
-      - Hasan Mahmud
-    volume: "14"
-    summary: >
-      Study on recognizing human affection from a smartphone perspective.
-
+publications:  
   - id: msr-2017-rediscovery
     title: "Rediscovery datasets: Connecting duplicate reports"
     venue: "2017 IEEE/ACM 14th International Conference on Mining Software Repositories (MSR)"
@@ -53,6 +28,7 @@ publications:
       - Andriy V Miranskyy
       - Graham Wills
       - Ayse Basar Bener
+    url: https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:2osOgNQ5qMEC
     summary: >
       Probabilistic modeling of user preferences in recommender systems.
 
@@ -69,25 +45,31 @@ publications:
       - Craig Statchuk
       - Ayse Basar Bener
     pages: "218-225"
+    url: https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:qjMakFHDy7sC
     summary: >
       Investigation of user interactions with IBM Watson Analytics.
 
   - id: thesis-2017-rediscovery
     title: "On Predicting Rediscoveries of Software Defects"
     venue: "Toronto Metropolitan University"
-    date: 2017-01-01
+    date: 2017-06-06
     authors:
       - Mefta Sadat
+    url: https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:UeHWp8X0CEIC
     summary: >
       Thesis on predicting rediscoveries of software defects.
 
-  - id: cse-2013-emotion
-    title: "Emotion Recognition Using Built-in Sensors and Pressure on Touchscreen Smartphones"
-    venue: "Department of Computer Science and Engineering (CSE), Islamic University of Technology"
-    date: 2013-01-01
+  - id: iccit-2014-affection
+    title: "Recognition of human affection in smartphone perspective based on accelerometer and user's sitting position"
+    venue: "2014 17th International Conference on Computer and Information Technology (ICCIT)"
+    date: 2014-12-22
     authors:
       - Rasam Bin Hossain
       - Mefta Sadat
+      - Hasan Mahmud
+    pages: "87-91"
+    publisher: IEEE
+    url: https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:u5HHmVD_uO8C
     summary: >
-      Emotion recognition using smartphone sensors and touchscreen pressure.
+      Research on recognizing human affection using smartphone sensors and accelerometer data.
 ---
