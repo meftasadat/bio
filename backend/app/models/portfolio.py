@@ -77,7 +77,6 @@ class Bio(BaseModel):
     summary: str = Field(..., description="Professional summary")
     about: str = Field(..., description="Detailed about section")
     contact: Contact = Field(..., description="Contact information")
-    skills: List[Skill] = Field(default_factory=list, description="Skills list")
     experience: List[Experience] = Field(default_factory=list, description="Work experience")
     education: List[Education] = Field(default_factory=list, description="Education history")
     talks: List[Talk] = Field(default_factory=list, description="Public speaking engagements")

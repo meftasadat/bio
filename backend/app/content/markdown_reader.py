@@ -12,7 +12,6 @@ from ..models.portfolio import (
     Contact,
     Education,
     Experience,
-    Skill,
     Talk,
     Publication,
 )
@@ -67,9 +66,7 @@ class MarkdownReader:
             repository, "contact.md"
         )
 
-        skills_frontmatter, _ = MarkdownReader.read_markdown_from_repository(
-            repository, "skills.md"
-        )
+
 
         experience_frontmatter, _ = MarkdownReader.read_markdown_from_repository(
             repository, "experience.md"
@@ -95,14 +92,7 @@ class MarkdownReader:
             location=contact_frontmatter.get('location', '')
         )
 
-        # Create skills objects
-        skills = []
-        for skill_data in skills_frontmatter.get('skills', []):
-            skills.append(Skill(
-                name=skill_data['name'],
-                category=skill_data['category'],
-                proficiency=skill_data['proficiency']
-            ))
+
 
         # Create experience objects
         experiences = []
@@ -201,7 +191,6 @@ class MarkdownReader:
             summary=bio_frontmatter.get('summary', ''),
             about=bio_content,
             contact=contact,
-            skills=skills,
             experience=experiences,
             education=educations,
             talks=talks,

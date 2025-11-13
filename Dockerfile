@@ -11,17 +11,21 @@ FROM python:3.13-slim AS backend
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+# Install system dependencies that may be needed
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 WORKDIR /app/backend
 COPY backend/pyproject.toml backend/uv.lock ./
-RUN uv sync --frozen --no-dev
+RUN uv pip install --system -r pyproject.toml
 
 COPY backend .
 COPY --from=frontend-builder /app/frontend/dist ./app/static/web
 
-ENV PATH="/app/backend/.venv/bin:$PATH"
 ENV PORT=8000
 EXPOSE 8000
 
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

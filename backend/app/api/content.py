@@ -29,11 +29,7 @@ async def get_bio():
         "contact": bio_data.contact
     }
 
-@router.get("/skills")
-async def get_skills():
-    """Get skills list."""
-    bio_data = get_bio_data()
-    return {"skills": bio_data.skills}
+
 
 @router.get("/experience")
 async def get_experience():

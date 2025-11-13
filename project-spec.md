@@ -4,7 +4,7 @@
 This is a professional portfolio website for Mefta Sadat, built as a full-stack web application with a React frontend and FastAPI backend.
 
 ## Architecture
-- **Frontend**: React application built with Vite, featuring portfolio sections (Hero, About, Skills, Experience, Talks, Publications, Blog, Contact)
+- **Frontend**: React application built with Vite, featuring portfolio sections (Hero, About, Experience, Talks, Publications, Blog)
 - **Backend**: FastAPI application providing REST API endpoints for content and blog data
 - **Deployment**: Containerized with Podman for backend, local development with uv for Python dependencies
 
