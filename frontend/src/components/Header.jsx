@@ -1,8 +1,10 @@
 import { Link, useLocation } from 'react-router-dom'
+import { useState } from 'react'
 import './Header.css'
 
 function Header() {
   const location = useLocation()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -13,6 +15,14 @@ function Header() {
     { path: '/blog', label: 'Blog' }
   ]
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+  }
+
   return (
     <header className="header">
       <nav className="nav">
@@ -21,19 +31,20 @@ function Header() {
             Mefta Sadat
           </Link>
         </div>
-        <ul className="nav-menu">
+        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           {navItems.map((item) => (
             <li key={item.path}>
               <Link
                 to={item.path}
                 className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
+                onClick={closeMenu}
               >
                 {item.label}
               </Link>
             </li>
           ))}
         </ul>
-        <div className="nav-toggle">
+        <div className="nav-toggle" onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>

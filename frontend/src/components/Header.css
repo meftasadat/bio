@@ -89,7 +89,7 @@
     right: 0;
     background-color: white;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1rem 2rem;
     box-shadow: var(--shadow-lg);
     transform: translateY(-100%);
     opacity: 0;
