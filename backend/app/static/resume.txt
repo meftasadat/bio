@@ -26,7 +26,7 @@ Others: Apache Airflow , Seldon, Vertex AI, GitLab, Docker, Kubernetes, Linux OS
 LOBLAW DIGITAL | STAFF SOFTWARE ENGINEER
 Aug 2018 - Present | Toronto, Canada
 
-2025 Q3: Built LD Internal Agent Orchestration Engine Alfred that is being used to deploy 10+ conversational agentic use cases. Alfred uses open source stack like LangGraph, LangFuse, LiteLLM, Gradio, and MCP servers.
+2025 Q3: Built LD Internal Agent Orchestration Engine Alfred that is being used to deploy many conversational agentic use cases. Alfred uses open source stack like LangGraph, LangFuse, LiteLLM, Gradio, and MCP servers.
 
 2025 Q1: Designed and deployed LLM-powered features, incorporating LLMOps principles. Built batch prediction, monitoring, and orchestration capable of processing 15 million prompts weekly, utilizing Qdrant for vector search, Vertex AI for ML infrastructure and Airflow for task orchestration.
 

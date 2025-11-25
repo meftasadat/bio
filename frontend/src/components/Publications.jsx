@@ -13,13 +13,6 @@ function Publications({ data }) {
   return (
     <section className="publications" id="publications">
       <div className="container">
-        <div className="publications-header">
-          <h2 className="section-title">Publications</h2>
-          <p className="section-subtitle">
-            Peer-reviewed research and technical reports on data quality, ML reliability, and developer tooling.
-          </p>
-        </div>
-
         <div className="publications-list">
           {data.map((pub) => (
             <article key={pub.id} className="publication-card">

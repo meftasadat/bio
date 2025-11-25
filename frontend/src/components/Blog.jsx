@@ -14,10 +14,6 @@ function Blog({ posts }) {
   return (
     <section className="blog" id="blog">
       <div className="container">
-        <div className="blog-header">
-          <h2 className="section-title">Latest Blog Posts</h2>
-          <a href="#blog" className="view-all-link">View All Posts →</a>
-        </div>
         <div className="blog-grid">
           {posts.map((post) => (
             <article key={post.id} className="blog-card">

@@ -13,7 +13,6 @@ function Experience({ data }) {
   return (
     <section className="experience" id="experience">
       <div className="container">
-        <h2 className="section-title">Work Experience</h2>
         <div className="experience-grid">
           {data.map((exp, index) => (
             <div key={exp.id} className="experience-card">
@@ -32,17 +31,6 @@ function Experience({ data }) {
                   className="experience-description rich-text"
                   dangerouslySetInnerHTML={{ __html: exp.description_html || exp.description }}
                 />
-
-                {exp.technologies && exp.technologies.length > 0 && (
-                  <div className="experience-tech-section">
-                    <h4 className="tech-section-title">Technologies Used:</h4>
-                    <div className="experience-tech">
-                      {exp.technologies.map((tech) => (
-                        <span key={tech} className="tech-tag">{tech}</span>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           ))}

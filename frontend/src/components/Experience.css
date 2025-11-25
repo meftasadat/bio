@@ -25,14 +25,15 @@
 }
 
 .experience-header {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-  color: white;
+  background: white;
+  color: var(--text-color);
   padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .experience-title-section {
@@ -49,14 +50,14 @@
 .experience-company {
   font-size: 1.1rem;
   font-weight: 500;
-  opacity: 0.9;
+  color: var(--text-light);
 }
 
 .experience-date {
   font-size: 0.9rem;
   font-weight: 500;
-  opacity: 0.8;
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  background: var(--bg-light);
   padding: 0.5rem 1rem;
   border-radius: var(--radius);
   white-space: nowrap;
@@ -107,8 +108,8 @@
 }
 
 .tech-tag {
-  background: var(--bg-light);
-  color: var(--primary-color);
+  background: white;
+  color: var(--text-light);
   padding: 0.5rem 1rem;
   border-radius: var(--radius);
   font-size: 0.875rem;
@@ -118,9 +119,9 @@
 }
 
 .tech-tag:hover {
-  background: var(--primary-color);
-  color: white;
-  transform: translateY(-1px);
+  background: var(--bg-light);
+  color: var(--text-color);
+  border-color: var(--text-light);
 }
 
 @media (max-width: 768px) {

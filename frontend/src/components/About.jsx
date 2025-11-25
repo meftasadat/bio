@@ -15,10 +15,6 @@ function About({ data }) {
   return (
     <section className="about" id="about">
       <div className="container">
-        <div className="about-header">
-          <h2 className="section-title">About Me</h2>
-          <div className="title-accent"></div>
-        </div>
 
         <div className="about-content">
           <div className="about-main">
@@ -60,6 +56,12 @@ function About({ data }) {
                   <span className="stat-number">50+</span>
                   <span className="stat-label">Projects Completed</span>
                 </div>
+              </div>
+
+              <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+                <a href="/MS_RESUME.pdf" download className="resume-button">
+                  Download Resume
+                </a>
               </div>
             </div>
           </div>

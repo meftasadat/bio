@@ -31,13 +31,6 @@ function Talks({ data }) {
   return (
     <section className="talks" id="talks">
       <div className="container">
-        <div className="talks-header">
-          <h2 className="section-title">Talks & Videos</h2>
-          <p className="section-subtitle">
-            Conference sessions, community meetups, and guest lectures featuring my work in agentic AI and MLOps.
-          </p>
-        </div>
-
         <div className="talks-grid">
           {data.map((talk) => {
             const embedUrl = toEmbedUrl(talk.video_url)
