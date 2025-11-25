@@ -1,10 +1,12 @@
 import './Hero.css'
+import ParticleBackground from './ParticleBackground'
 
 function Hero({ data }) {
   if (!data) return null
 
   return (
     <section className="hero">
+      <ParticleBackground />
       <div className="hero-content">
         <h1 className="hero-title">
           Hi, I'm <span className="highlight">{data.name}</span>
@@ -15,12 +17,11 @@ function Hero({ data }) {
           <a href="#talks" className="btn btn-primary">Watch My Talks</a>
         </div>
       </div>
-      <div className="hero-image">
-        <div className="profile-placeholder">
-          <span>MS</span>
-        </div>
-      </div>
+
+
     </section>
+
+
   )
 }
 

@@ -12,6 +12,7 @@ import Blog from './components/Blog'
 import BlogPost from './components/BlogPost'
 import Talks from './components/Talks'
 import Publications from './components/Publications'
+
 import { API_BASE_URL } from './lib/api.js'
 
 function App() {
