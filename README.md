@@ -1,6 +1,6 @@
-# Your Name – A Professional Bio & Portfolio Template
+# Bio – A Professional Bio & Portfolio Template
 
-This is a full-stack, batteries-included portfolio application designed to be easily deployed and maintained. It serves a React frontend and a FastAPI backend from a single container, making it perfect for platforms like Google Cloud Run. The content for your bio, blog, talks, and publications is driven by local or remote Markdown files, allowing for quick updates without redeploying.
+This is a full-stack, batteries-included portfolio application designed to be easily deployed and maintained. It serves a React frontend and a FastAPI backend from a single container, making it perfect for platforms like Google Cloud Run. The content for your bio, blog, talks, and publications is driven by local or remote Markdown files, allowing for quick updates.
 
 This repository is designed to be a template. Fork it, customize it, and deploy your own professional bio in minutes.
 
@@ -30,7 +30,7 @@ This repository is designed to be a template. Fork it, customize it, and deploy 
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/bio.git
+    git clone https://github.com/meftasadat/bio.git
     cd bio
     ```
 
