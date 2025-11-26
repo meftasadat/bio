@@ -73,7 +73,7 @@ function Experience({ data }) {
     const companyUrl = companyUrlMap[company]
 
     if (logoFile) {
-      const imgTag = <img src={`http://localhost:8000/static/${logoFile}`} alt={company} className="company-logo" />
+      const imgTag = <img src={`/static/${logoFile}`} alt={company} className="company-logo" />
       return companyUrl ? <a href={companyUrl} target="_blank" rel="noopener noreferrer">{imgTag}</a> : imgTag
     }
 

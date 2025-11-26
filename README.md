@@ -1,20 +1,21 @@
-# Mefta Sadat – Professional Bio
+# Your Name – A Professional Bio & Portfolio Template
 
-Full-stack portfolio application that serves the React frontend and FastAPI backend from a single container. Markdown content (bio sections + blog posts) can be edited locally or sourced directly from a GitHub repo for near real-time updates without redeploying.
+This is a full-stack, batteries-included portfolio application designed to be easily deployed and maintained. It serves a React frontend and a FastAPI backend from a single container, making it perfect for platforms like Google Cloud Run. The content for your bio, blog, talks, and publications is driven by local or remote Markdown files, allowing for quick updates without redeploying.
+
+This repository is designed to be a template. Fork it, customize it, and deploy your own professional bio in minutes.
 
 ## Features
-- **Single deployment artifact**: Vite build output is served by FastAPI, so Cloud Run (or any container runtime) only needs one image.
-- **Markdown-driven content**: Bio sections and blog posts live in markdown files with YAML frontmatter. When `CONTENT_SOURCE=github`, the API fetches files from GitHub using ETags for lightweight hot reloads.
-- **Rich blog rendering**: Markdown is rendered server-side via `markdown-it-py` (tables, checklists, footnotes, fenced code) and sanitized with Bleach before being sent to the client.
-- **Talks & Publications**: Share conference talks (with optional YouTube embeds) via `talks.md` and highlight scientific papers via `publications.md`.
-- **Resume delivery**: `/api/resume/download` automatically serves `resume.pdf` (preferred) or falls back to a text version if the PDF isn’t available yet.
-- **Automated builds**: GitHub Actions builds and pushes the container to GitHub Container Registry (GHCR) on every push to `main` or version tag.
+- **Single Deployment Artifact**: Vite builds the frontend, and FastAPI serves it. This means you only need one container image for your entire application.
+- **Markdown-Driven Content**: Your professional information lives in Markdown files. You can edit them locally or, for a more advanced setup, host them in a separate GitHub repository. The backend can be configured to pull updates automatically.
+- **Rich Blog & Content Rendering**: Markdown is rendered on the server-side, supporting features like tables, checklists, footnotes, and syntax-highlighted code blocks.
+- **Built-in Sections**: Comes with pre-built sections for your resume, conference talks, and publications.
+- **Automated Builds**: A GitHub Actions workflow is included to build and push a container image to GitHub Container Registry (GHCR) on every push to the `main` branch.
 
 ## Tech Stack
 - **Backend**: FastAPI, Pydantic, uvicorn, `uv` for dependency management.
 - **Frontend**: React 18 + Vite with React Router.
-- **Content pipeline**: `markdown-it-py`, `mdit-py-plugins`, and `bleach`.
-- **Container**: Multi-stage Docker build (Node 18 + Python 3.13) suitable for Cloud Run.
+- **Content Pipeline**: `markdown-it-py`, `mdit-py-plugins`, and `bleach`.
+- **Container**: A multi-stage Docker build suitable for any container runtime, optimized for Google Cloud Run.
 
 ## Getting Started
 
@@ -22,97 +23,90 @@ Full-stack portfolio application that serves the React frontend and FastAPI back
 - Python 3.13+
 - Node.js 18+
 - [`uv`](https://github.com/astral-sh/uv) installed globally
-- Podman or Docker (optional, for container builds)
+- Docker or a compatible container runtime (like Podman).
+- `gcloud` CLI (for deployment)
 
 ### Local Development
 
-```bash
-# Fast dev loop (default): backend + Vite dev server
-./run-local.sh
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/bio.git
+    cd bio
+    ```
 
-# Serve the compiled frontend via FastAPI (production preview)
-./run-local.sh build
+2.  **Run the development server:**
+    ```bash
+    # This script handles both backend and frontend setup.
+    ./run-local.sh
+    ```
+    - The backend will be available at `http://localhost:8000`.
+    - The frontend (with hot-reloading) will be at `http://localhost:5173`.
+
+3.  **To preview the production build locally:**
+    ```bash
+    ./run-local.sh build
+    ```
+    This will build the frontend and serve it from the FastAPI backend, just like in production.
+
+## Deployment to Google Cloud Run
+
+This project is optimized for deployment on Google Cloud Run.
+
+### 1. Build and Push the Container Image
+
+The included GitHub Actions workflow in `.github/workflows/container.yml` will automatically build and push the container image to GitHub Container Registry (GHCR) every time you push to the `main` branch.
+
+The image will be tagged as `ghcr.io/<your-github-username>/bio:latest`.
+
+### 2. Deploy to Cloud Run
+
+Once your image is on GHCR, you can deploy it using the `gcloud` command-line tool.
+
+```bash
+# Replace <your-github-username> with your GitHub username
+# Replace <your-gcp-project-id> with your Google Cloud project ID
+# Replace <your-region> with your desired GCP region (e.g., us-central1)
+
+gcloud run deploy bio-app \
+  --image ghcr.io/<your-github-username>/bio:latest \
+  --platform managed \
+  --project <your-gcp-project-id> \
+  --region <your-region> \
+  --allow-unauthenticated \
+  --set-env-vars="CORS_ORIGINS=https://your-domain.com"
 ```
 
-In `dev` mode the script:
-1. Syncs backend deps with `uv sync` inside `backend/` and runs FastAPI (`http://localhost:8000`).
-2. Installs frontend deps with `npm ci|install` and launches Vite dev on `http://localhost:5173` (proxying `/api`).
+This command deploys your application and makes it publicly accessible.
 
-`build` mode compiles the Vite app, copies `dist/` into `backend/app/static/web`, syncs backend deps, and serves the bundled site from FastAPI—handy for Cloud Run parity testing. Stop with `Ctrl+C`; both modes clean up child processes automatically.
+### 3. Setting Environment Variables
 
-### Environment Configuration
+You can set environment variables directly in the `gcloud` command or configure them in the Cloud Run console. The most important one to configure for a production deployment is `CORS_ORIGINS`.
 
-The backend reads configuration from environment variables (defaults shown):
-
-| Variable | Description | Default |
+| Variable | Description | Example |
 | --- | --- | --- |
-| `CORS_ORIGINS` | Comma-separated list of allowed origins | `http://localhost:3000,http://localhost:5173` |
-| `CONTENT_SOURCE` | `local` or `github` | `local` |
-| `CONTENT_LOCAL_PATH` | Absolute path to markdown dir when `local` | `backend/app/content/markdown` |
-| `CONTENT_GITHUB_REPO` | `owner/name` for repo hosting markdown | _unset_ |
-| `CONTENT_GITHUB_BRANCH` | Branch for markdown files | `main` |
-| `CONTENT_GITHUB_SUBDIR` | Subdirectory containing markdown in repo | `backend/app/content/markdown` |
-| `CONTENT_GITHUB_TOKEN` | Optional token for private repos / higher rate limits | _unset_ |
-| `CONTENT_REFRESH_INTERVAL_SECONDS` | Minimum seconds between GitHub revalidation | `60` |
-| `CONTENT_RELOAD_TOKEN` | Optional shared secret for `/api/content/reload` | _unset_ |
+| `CORS_ORIGINS` | Comma-separated list of allowed origins. | `https://your-domain.com,https://www.your-domain.com` |
+| `CONTENT_SOURCE` | `local` or `github`. Use `github` to pull from a remote repo. | `github` |
+| `CONTENT_GITHUB_REPO` | `owner/name` for the repo hosting your Markdown files. | `your-username/my-portfolio-content` |
 
-Frontend API requests default to `/api`. Override with `VITE_API_BASE_URL` (see `frontend/.env.example`).  
-New content sections live in:
+For a full list of environment variables, see the "Environment Configuration" section below.
 
-| File | Contents |
-| --- | --- |
-| `backend/app/content/markdown/talks.md` | List of public talks with event metadata, links, and optional `video_url` |
-| `backend/app/content/markdown/publications.md` | List of publications with venue, authors, summary |
+## Customizing the Content
 
-### Content Reloading from GitHub
-1. Push markdown changes to the configured repository/branch.
-2. The backend fetches files via GitHub’s raw/API endpoints. It stores ETags and only re-downloads when content changes (or when `CONTENT_REFRESH_INTERVAL_SECONDS` elapses).
-3. For instant cache busting, hit `POST /api/content/reload` with header `X-Reload-Token: <CONTENT_RELOAD_TOKEN>`. You can trigger this via a GitHub Actions workflow after content merges.
+To make this portfolio your own, you'll want to edit the content.
 
-### Building the Container & Running Locally
+- **Bio, Experience, etc.**: Edit the Markdown files in `backend/app/content/markdown/`.
+- **Resume**: Replace the placeholder `backend/app/static/resume.pdf` with your own resume.
+- **Images**: Add your own images to `backend/app/static/` and update the references in the frontend components (e.g., `frontend/src/components/Experience.jsx`).
 
-```bash
-# Build the multi-stage image
-docker build -t bio .
-
-# Run it
-docker run --rm -p 8000:8000 bio
-```
-
-Or with Podman:
-
-```bash
-./run-podman.sh
-```
-
-Published images on GHCR are multi-architecture (`linux/amd64` + `linux/arm64`), so you can pull and run them on Intel/AMD servers or Apple Silicon Macs without emulation:
-
-```bash
-docker pull ghcr.io/<your-gh-username-or-org>/bio:latest
-docker run --rm -p 8000:8000 ghcr.io/<your-gh-username-or-org>/bio:latest
-```
-
-Cloud Run will inject `$PORT`; the container entrypoint already respects it.
-
-### GitHub Actions / GHCR
-The workflow in `.github/workflows/container.yml`:
-- Logs in to GHCR.
-- Builds the container with Buildx (multi-arch manifest pushed on non-PR builds).
-- Pushes tags `ghcr.io/<owner>/bio:latest` and `ghcr.io/<owner>/bio:<sha>` (skips pushing on PRs).
-
-Set Cloud Run (or your orchestrator) to pull from GHCR with the token of your choice.
+For more advanced customization, you can modify the React components in `frontend/src/components/`.
 
 ## API Overview
-- `GET /api/content` – entire bio payload (bio, contact, skills, experience, education).
-- `GET /api/content/bio|skills|experience|education` – section-specific slices.
-- `GET /api/content/talks` – public speaking engagements + video links.
-- `GET /api/content/publications` – research publications.
-- `POST /api/content/reload` – clears markdown caches (requires `CONTENT_RELOAD_TOKEN`).
-- `GET /api/blog?limit=&offset=&tag=&featured=` – paginated, filtered posts (published only).
-- `GET /api/blog/{id}` / `/api/blog/slug/{slug}` – individual post.
-- `GET /api/blog/tags/all` – unique tags across published posts.
-- `GET /api/resume/download` – resume file (PDF preferred; falls back to text).
-- `GET /health` – health check for Cloud Run.
+- `GET /api/content` – The entire bio payload.
+- `GET /api/blog` – Paginated blog posts.
+- `GET /api/resume/download` – Serves your resume file.
+- `GET /health` – A health check endpoint for Cloud Run.
+
+For a full list of API endpoints, see the code in `backend/app/api/`.
 
 ## Project Structure
 ```
@@ -120,25 +114,15 @@ bio/
 ├── backend/
 │   ├── app/
 │   │   ├── api/                # FastAPI routers
-│   │   ├── content/            # Markdown loaders
-│   │   ├── core/               # Settings
-│   │   ├── models/             # Pydantic schemas
-│   │   └── services/           # Content repo + Markdown renderer
-│   ├── pyproject.toml
-│   └── uv.lock
+│   │   ├── content/            # Markdown content and loaders
+│   │   └── services/           # Content repository and renderers
 ├── frontend/
 │   ├── src/
-│   │   ├── components/
-│   │   └── lib/api.js          # API base config
-│   ├── vite.config.js
-│   └── package.json
-├── Dockerfile
-├── .github/workflows/container.yml
-├── run-local.sh
-└── run-podman.sh
+│   │   ├── components/         # React components
+│   └── lib/api.js              # API configuration
+├── .github/workflows/container.yml # GitHub Actions workflow for CI/CD
+├── Dockerfile                  # Multi-stage Dockerfile
+└── run-local.sh                # Local development script
 ```
 
-## Next Steps
-- Drop your real `resume.pdf` into `backend/app/static/`.
-- Point `CONTENT_SOURCE` to `github`, set repo details, and automate `POST /api/content/reload` after merges.
-- Wire Cloud Run to the GHCR image for one-command deployments.
+This project is licensed under the terms of the MIT license. See LICENSE for more details.
