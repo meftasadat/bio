@@ -55,7 +55,7 @@ function Experience({ data }) {
   const getCompanyIcon = (company) => {
     const logoMap = {
       'Loblaw Digital': 'loblaw-digital-logo.png',
-      'Samsung R&D Institute Bangladesh': 'samsung-logo.png',
+      'Samsung Research': 'samsung-logo.png',
       'ZoneTV': 'zoneify-logo.png',
       'Toronto Metropolitan University': 'tmu-logo.jpg',
       'IBM-CAS': 'ibm-logo.png'
@@ -63,7 +63,7 @@ function Experience({ data }) {
 
     const companyUrlMap = {
       'Loblaw Digital': 'https://www.loblawdigital.co',
-      'Samsung R&D Institute Bangladesh': 'https://research.samsung.com/srbd',
+      'Samsung Research': 'https://research.samsung.com/srbd',
       'ZoneTV': 'https://zone.tv/',
       'Toronto Metropolitan University': 'https://www.torontomu.ca/data-science-lab/research/',
       'IBM-CAS': 'https://open-development.org/collab/cas/'
