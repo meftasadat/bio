@@ -61,9 +61,20 @@ function Experience({ data }) {
       'IBM-CAS': 'ibm-logo.png'
     }
 
+    const companyUrlMap = {
+      'Loblaw Digital': 'https://www.loblawdigital.co',
+      'Samsung R&D Institute Bangladesh': 'https://research.samsung.com/srbd',
+      'ZoneTV': 'https://zone.tv/',
+      'Toronto Metropolitan University': 'https://www.torontomu.ca/data-science-lab/research/',
+      'IBM-CAS': 'https://open-development.org/collab/cas/'
+    }
+
     const logoFile = logoMap[company]
+    const companyUrl = companyUrlMap[company]
+
     if (logoFile) {
-      return <img src={`http://localhost:8000/static/${logoFile}`} alt={company} className="company-logo" />
+      const imgTag = <img src={`http://localhost:8000/static/${logoFile}`} alt={company} className="company-logo" />
+      return companyUrl ? <a href={companyUrl} target="_blank" rel="noopener noreferrer">{imgTag}</a> : imgTag
     }
 
     // Fallback to first letter

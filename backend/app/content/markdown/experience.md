@@ -69,7 +69,7 @@ experiences:
       - Probabilistic Classifiers
 
   - id: samsung-rnd
-    company: Samsung R&D Institute Bangladesh
+    company: Samsung Research
     position: Software Engineer
     location: Dhaka, Bangladesh
     start_date: 2013-11-01
