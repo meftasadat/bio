@@ -97,6 +97,7 @@ class MarkdownReader:
                 end_date=parsed_end_date,
                 description=description_markdown,
                 description_html=render_markdown(description_markdown),
+                location=exp_data.get('location'),
                 technologies=exp_data.get('technologies', [])
             ))
 

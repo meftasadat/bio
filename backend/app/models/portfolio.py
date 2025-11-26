@@ -22,6 +22,7 @@ class Experience(BaseModel):
     end_date: Optional[date_type] = Field(None, description="End date (None for current position)")
     description: str = Field(..., description="Job description")
     description_html: str = Field(..., description="Rendered job description")
+    location: Optional[str] = Field(None, description="Job location")
     technologies: List[str] = Field(default_factory=list, description="Technologies used")
 
 

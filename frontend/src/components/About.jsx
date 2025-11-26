@@ -33,9 +33,11 @@ function About({ data }) {
           <div className="about-sidebar">
             <div className="profile-card">
               <div className="profile-avatar">
-                <span className="avatar-text">
-                  {data.name.split(' ').map(n => n[0]).join('')}
-                </span>
+                <img
+                  src="/static/bio-img.JPG"
+                  alt={data.name}
+                  className="profile-image"
+                />
                 <div className="avatar-glow"></div>
               </div>
 
@@ -47,15 +49,16 @@ function About({ data }) {
                 </div>
               </div>
 
-              <div className="profile-stats">
-                <div className="stat-item">
-                  <span className="stat-number">7+</span>
-                  <span className="stat-label">Years Experience</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-number">50+</span>
-                  <span className="stat-label">Projects Completed</span>
-                </div>
+              <div className="profile-contact">
+                <a href="https://www.linkedin.com/in/meftasadat/" target="_blank" rel="noopener noreferrer" className="contact-link" title="LinkedIn">
+                  <i className="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/meftasadat" target="_blank" rel="noopener noreferrer" className="contact-link" title="GitHub">
+                  <i className="fab fa-github"></i>
+                </a>
+                <a href="mailto:meftasadat@gmail.com" className="contact-link" title="Email">
+                  <i className="fas fa-envelope"></i>
+                </a>
               </div>
 
               <div style={{ marginTop: '2rem', textAlign: 'center' }}>

@@ -3,27 +3,91 @@
   background-color: var(--bg-light);
 }
 
-.experience-grid {
-  display: grid;
-  gap: 2rem;
+/* Timeline Container */
+.experience-timeline {
+  position: relative;
   max-width: 1000px;
   margin: 0 auto;
+  padding-left: 60px;
 }
 
+/* Vertical Timeline Line */
+.timeline-line {
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg,
+      transparent 0%,
+      hsl(220, 70%, 60%) 10%,
+      hsl(220, 70%, 60%) 90%,
+      transparent 100%);
+}
+
+/* Timeline Item */
+.experience-item {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+/* Timeline Node */
+.timeline-node {
+  position: absolute;
+  left: -60px;
+  top: 2rem;
+  z-index: 2;
+}
+
+.timeline-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: hsl(220, 70%, 60%);
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+    0 0 0 4px white,
+    0 0 0 6px hsl(220, 70%, 60%, 0.3);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.company-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+}
+
+.experience-item:hover .timeline-icon {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2),
+    0 0 0 4px white,
+    0 0 0 8px hsl(220, 70%, 60%, 0.4);
+}
+
+/* Experience Card */
 .experience-card {
   background: white;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   overflow: hidden;
   border: 1px solid var(--border-color);
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
 
 .experience-card:hover {
-  transform: translateY(-2px);
+  transform: translateX(4px);
   box-shadow: var(--shadow-lg);
+  border-color: hsl(220, 70%, 60%, 0.3);
 }
 
+/* Experience Header */
 .experience-header {
   background: white;
   color: var(--text-color);
@@ -34,6 +98,12 @@
   flex-wrap: wrap;
   gap: 1rem;
   border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.experience-header:hover {
+  background-color: hsl(220, 70%, 98%);
 }
 
 .experience-title-section {
@@ -45,12 +115,23 @@
   font-weight: 700;
   margin: 0 0 0.5rem 0;
   line-height: 1.2;
+  background: linear-gradient(135deg, hsl(220, 70%, 40%), hsl(260, 70%, 50%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .experience-company {
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--text-light);
+}
+
+/* Experience Meta */
+.experience-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .experience-date {
@@ -63,14 +144,93 @@
   white-space: nowrap;
 }
 
+.experience-location {
+  color: var(--text-light);
+}
+
+/* Expand Toggle Button */
+.expand-toggle {
+  background: linear-gradient(135deg, hsl(220, 70%, 60%), hsl(260, 70%, 60%));
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.expand-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.expand-toggle i {
+  transition: transform 0.3s ease;
+}
+
+/* Highlights Section */
+.experience-highlights {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, hsl(220, 70%, 98%), hsl(260, 70%, 98%));
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.highlight-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid hsl(220, 70%, 90%);
+  transition: all 0.3s ease;
+}
+
+.highlight-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: hsl(220, 70%, 60%);
+}
+
+.highlight-badge i {
+  color: hsl(45, 100%, 50%);
+  font-size: 0.9rem;
+}
+
+.highlight-badge span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Experience Content */
 .experience-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.experience-content.collapsed {
+  max-height: 0;
+  padding: 0 2rem;
+}
+
+.experience-content.expanded {
+  max-height: 2000px;
   padding: 2rem;
 }
 
 .experience-description {
   color: var(--text-light);
   line-height: 1.6;
-  margin-bottom: 1.5rem;
 }
 
 .experience-description.rich-text ul,
@@ -88,65 +248,56 @@
   color: var(--text-color);
 }
 
-.experience-tech-section {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.tech-section-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-color);
-  margin: 0 0 1rem 0;
-}
-
-.experience-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.tech-tag {
-  background: white;
-  color: var(--text-light);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid var(--border-color);
-  transition: var(--transition);
-}
-
-.tech-tag:hover {
-  background: var(--bg-light);
-  color: var(--text-color);
-  border-color: var(--text-light);
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
+  .experience-timeline {
+    padding-left: 50px;
+  }
+
+  .timeline-line {
+    left: 20px;
+  }
+
+  .timeline-node {
+    left: -50px;
+  }
+
+  .timeline-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
   .experience-header {
     flex-direction: column;
     text-align: left;
+    padding: 1.5rem;
   }
 
   .experience-position {
     font-size: 1.25rem;
   }
 
+  .experience-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .experience-date {
-    align-self: flex-start;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
   }
 
-  .experience-content {
+  .experience-highlights {
+    padding: 1rem 1.5rem;
+  }
+
+  .highlight-badge {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .experience-content.expanded {
     padding: 1.5rem;
-  }
-
-  .experience-bullet {
-    padding-left: 2rem;
-  }
-
-  .experience-bullet::before {
-    left: 0.25rem;
   }
 }

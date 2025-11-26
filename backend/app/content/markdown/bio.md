@@ -1,13 +1,11 @@
 ---
 name: Mefta Sadat
 title: Staff Software Engineer
-summary: I'm currently working at Loblaw Digital specializing in MLOps, Agentic AI, and scalable data platforms. 7+ years of experience building production ML systems and conversational AI solutions.
+summary: I specialize in MLOps and Agentic AI. 9+ years of experience building production ML Systems.
 ---
 
-I'm currently working at Loblaw Digital with extensive experience in machine learning operations, agentic AI, and big data platforms. My career spans from research in machine learning at Toronto Metropolitan University to building production systems that serve millions of users.
+I'm a Staff Software Engineer at Loblaw Digital, specializing in MLOps, Agentic AI, and scalable data platforms. With over 9 years of experience, I bridge the gap between research and production, building systems that serve millions of users.
 
-At Loblaw Digital, I've designed Alfred - an internal agent orchestration engine using cutting-edge open source technologies like LangGraph, LangFuse, and MCP servers. I've also developed comprehensive MLOps platform - Helios Recommendation Engine - that enable data scientists to go from experimentation to production deployment quickly, saving the company over $200k annually.
+Currently, I'm architecting Alfred, an internal agent orchestration engine. Previously I led the development of the Helios Recommendation Engine. My expertise spans cloud platforms (GCP, AWS), ML Infra and Serving, Big Data Processing, and modern DevOps practices.
 
-My technical expertise includes Agentic AI frameworks, cloud platforms (GCP, AWS, Azure), big data processing (Apache Beam, Spark, Kafka), and modern DevOps practices. I'm passionate about building scalable, reliable systems that make a real impact on business outcomes.
-
-When I'm not architecting complex systems, you can find me speaking at conferences, contributing to open source projects, or exploring the latest developments in AI and machine learning. Outside work, I like playing soccer, traveling and photography.
+When I'm not building complex systems, I like to explore the latest in AI and spent time in Nature. I'm also an avid traveler (5 continents and counting!), photographer, and soccer enthusiast.
