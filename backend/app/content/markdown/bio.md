@@ -1,7 +1,7 @@
 ---
 name: Mefta Sadat
 title: Staff Software Engineer
-summary: I specialize in MLOps and Agentic AI. 9+ years of experience building production ML Systems.
+summary: I specialize in MLOps and Agentic AI. 9+ YoE.
 ---
 
 I'm a Staff Software Engineer at Loblaw Digital, specializing in MLOps, Agentic AI, and scalable data platforms. With over 9 years of experience, I bridge the gap between research and production, building systems that serve millions of users.
