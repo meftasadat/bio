@@ -9,10 +9,10 @@
   text-align: center;
 }
 
-.talks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+.talks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
 }
 
 .talk-card {

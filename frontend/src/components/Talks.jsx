@@ -31,44 +31,46 @@ function Talks({ data }) {
   return (
     <section className="talks" id="talks">
       <div className="container">
-        <div className="talks-grid">
-          {data.map((talk) => {
-            const embedUrl = toEmbedUrl(talk.video_url)
-            return (
-              <article key={talk.id} className="talk-card">
-                <div className="talk-meta">
-                  <span className="talk-date">{formatDate(talk.date)}</span>
-                  <span className="talk-event">{talk.event}</span>
-                  {talk.location && <span className="talk-location">{talk.location}</span>}
-                </div>
-                <h3 className="talk-title">{talk.title}</h3>
-                {talk.description_html && (
-                  <div
-                    className="talk-description"
-                    dangerouslySetInnerHTML={{ __html: talk.description_html }}
-                  />
-                )}
-                {embedUrl && (
-                  <div className="talk-video">
-                    <iframe
-                      src={embedUrl}
-                      title={talk.title}
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
+        <div className="talks-list">
+          {[...data]
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map((talk) => {
+              const embedUrl = toEmbedUrl(talk.video_url)
+              return (
+                <article key={talk.id} className="talk-card">
+                  <div className="talk-meta">
+                    <span className="talk-date">{formatDate(talk.date)}</span>
+                    <span className="talk-event">{talk.event}</span>
+                    {talk.location && <span className="talk-location">{talk.location}</span>}
                   </div>
-                )}
-                <div className="talk-links">
-                  {talk.video_url && (
-                    <a href={talk.video_url} target="_blank" rel="noopener noreferrer">
-                      Watch on YouTube →
-                    </a>
+                  <h3 className="talk-title">{talk.title}</h3>
+                  {talk.description_html && (
+                    <div
+                      className="talk-description"
+                      dangerouslySetInnerHTML={{ __html: talk.description_html }}
+                    />
                   )}
-                </div>
-              </article>
-            )
-          })}
+                  {embedUrl && (
+                    <div className="talk-video">
+                      <iframe
+                        src={embedUrl}
+                        title={talk.title}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  )}
+                  <div className="talk-links">
+                    {talk.video_url && (
+                      <a href={talk.video_url} target="_blank" rel="noopener noreferrer">
+                        Watch on YouTube →
+                      </a>
+                    )}
+                  </div>
+                </article>
+              )
+            })}
         </div>
       </div>
     </section>

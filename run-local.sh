@@ -9,10 +9,25 @@ if ! command -v uv >/dev/null 2>&1; then
   exit 1
 fi
 
+
+cleanup_ports() {
+  local ports=("8000" "5173")
+  for port in "${ports[@]}"; do
+    pids=$(lsof -ti :"$port" 2>/dev/null) || true
+    if [ -n "$pids" ]; then
+      echo "Killing processes on port $port: $pids"
+      # shellcheck disable=SC2086
+      kill -9 $pids 2>/dev/null || true
+    fi
+  done
+}
+
 cleanup() {
   pkill -P $$ >/dev/null 2>&1 || true
 }
 trap cleanup EXIT
+
+cleanup_ports
 
 install_frontend_dependencies() {
   pushd "$ROOT_DIR/frontend" >/dev/null
