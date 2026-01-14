@@ -1,0 +1,164 @@
+.apps-section {
+    min-height: 100vh;
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-light) 100%);
+}
+
+.apps-intro {
+    text-align: center;
+    font-size: 1.25rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: -1.5rem auto 3rem;
+    line-height: 1.7;
+}
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.app-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--bg-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.app-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--app-color), var(--secondary-color));
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--app-color);
+}
+
+.app-card:hover::before {
+    opacity: 1;
+}
+
+.app-card-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.app-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.app-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.app-card-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--text-color);
+}
+
+.app-card-tagline {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.app-card-platforms {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.platform-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.platform-badge.android {
+    background: linear-gradient(135deg, #3DDC84, #2DA65C);
+    color: white;
+}
+
+.platform-badge.ios {
+    background: linear-gradient(135deg, #007AFF, #0055D4);
+    color: white;
+}
+
+.app-card-arrow {
+    flex-shrink: 0;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.app-card:hover .app-card-arrow {
+    color: var(--app-color);
+    transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .apps-section {
+        padding: 6rem 0 3rem;
+    }
+
+    .apps-intro {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .apps-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .app-card {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+
+    .app-card-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+    }
+
+    .app-card-name {
+        font-size: 1.25rem;
+    }
+}
