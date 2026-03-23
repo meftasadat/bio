@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import './About.css'
+import ResumeModal from './ResumeModal'
 
 function About({ data }) {
+  const [showResumeModal, setShowResumeModal] = useState(false)
+
   if (!data) return null
 
   const renderAboutText = (text) => {
@@ -25,6 +29,7 @@ function About({ data }) {
   };
 
   return (
+    <>
     <section className="about" id="about">
       <div className="container">
 
@@ -74,15 +79,22 @@ function About({ data }) {
               </div>
 
               <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-                <a href="/MS_RESUME.pdf" download className="resume-button">
+                <button className="resume-button" onClick={() => setShowResumeModal(true)}>
+                  <i className="fas fa-file-pdf" style={{ marginRight: '0.5rem' }}></i>
                   Download Resume
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <ResumeModal
+      isOpen={showResumeModal}
+      onClose={() => setShowResumeModal(false)}
+      data={data}
+    />
+    </>
   )
 }
 

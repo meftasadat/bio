@@ -3,14 +3,19 @@ Main FastAPI application for the professional bio website.
 """
 from contextlib import asynccontextmanager
 from pathlib import Path
+from typing import Dict, List, Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
+from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
 from .api import content, blog
 from .core.config import get_settings
+from .services.resume_generator import generate_resume_latex, compile_latex_to_pdf
+from .api.content import get_bio_data
+from .api.blog import load_blog_posts
 
 
 @asynccontextmanager
@@ -47,6 +52,45 @@ app.mount("/static", StaticFiles(directory=str(static_path)), name="static")
 # API routes
 app.include_router(content.router, prefix="/api/content", tags=["content"])
 app.include_router(blog.router, prefix="/api/blog", tags=["blog"])
+
+
+class ResumeRequest(BaseModel):
+    """Request body for dynamic resume generation."""
+    sections: Dict[str, bool] = {
+        "summary": True,
+        "experience": True,
+        "education": True,
+        "talks": True,
+        "publications": True,
+        "blogs": True,
+    }
+    experience_ids: Optional[List[str]] = None
+
+
+@app.post("/api/resume/generate")
+async def generate_resume(request: ResumeRequest):
+    """Generate a dynamic resume PDF from portfolio data."""
+    try:
+        bio = get_bio_data()
+        blog_posts = None
+        if request.sections.get("blogs"):
+            all_posts = [p for p in load_blog_posts() if p.published]
+            blog_posts = all_posts[:10]  # Limit to 10 most recent
+
+        latex_source = generate_resume_latex(
+            bio=bio,
+            sections=request.sections,
+            experience_ids=request.experience_ids,
+            blog_posts=blog_posts,
+        )
+        pdf_path = compile_latex_to_pdf(latex_source)
+        return FileResponse(
+            path=pdf_path,
+            filename="Mefta_Sadat_Resume.pdf",
+            media_type="application/pdf",
+        )
+    except RuntimeError as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/api/resume/download")
