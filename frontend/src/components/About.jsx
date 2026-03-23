@@ -4,10 +4,22 @@ function About({ data }) {
   if (!data) return null
 
   const renderAboutText = (text) => {
-    // Split into paragraphs and add some formatting
+    // Parse markdown links [text](url) within a string
+    const parseLinks = (str) => {
+      const parts = str.split(/(\[[^\]]+\]\([^)]+\))/g)
+      return parts.map((part, i) => {
+        const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+        if (match) {
+          return <a key={i} href={match[2]} target="_blank" rel="noopener noreferrer">{match[1]}</a>
+        }
+        return part
+      })
+    }
+
+    // Split into paragraphs and render with link parsing
     return text.split('\n\n').map((paragraph, index) => (
       <p key={index} className="about-paragraph">
-        {paragraph.trim()}
+        {parseLinks(paragraph.trim())}
       </p>
     ));
   };

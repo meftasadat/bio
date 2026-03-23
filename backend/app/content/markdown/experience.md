@@ -1,10 +1,22 @@
 ---
 experiences:
+  - id: priceline
+    company: Priceline.com
+    position: Staff Engineer, AI/ML Platform
+    location: Toronto, Canada
+    start_date: 2026-03-01
+    description: |
+      - Building and scaling AI/ML platform infrastructure at Priceline.com.
+    technologies:
+      - AI/ML
+      - Platform Engineering
+
   - id: loblaw-digital
     company: Loblaw Digital
     position: Staff Software Engineer
     location: Toronto, Canada
     start_date: 2018-08-01
+    end_date: 2026-03-01
     description: |
       - Led the development of Alfred, an internal agent orchestration engine powering many conversational AI applications across the organization. Architected the solution using LangGraph, LangFuse, LiteLLM, Gradio, and MCP servers to enable scalable agentic workflows.
       - Designed and deployed enterprise-scale LLM infrastructure incorporating LLMOps best practices. Implemented batch prediction, monitoring, and orchestration systems processing 15 million prompts weekly, leveraging Qdrant for vector search, Vertex AI for ML infrastructure, and Airflow for workflow orchestration.

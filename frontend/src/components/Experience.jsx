@@ -7,7 +7,9 @@ function Experience({ data }) {
   if (!data || data.length === 0) return null
 
   const formatDate = (date) => {
-    return new Date(date).toLocaleDateString('en-US', {
+    // Append T12:00:00 to date-only strings to avoid timezone shift issues
+    const dateStr = typeof date === 'string' && !date.includes('T') ? date + 'T12:00:00' : date
+    return new Date(dateStr).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short'
     })
@@ -54,6 +56,7 @@ function Experience({ data }) {
   // Get company logo or fallback to first letter
   const getCompanyIcon = (company) => {
     const logoMap = {
+      'Priceline.com': 'priceline-logo.png',
       'Loblaw Digital': 'loblaw-digital-logo.png',
       'Samsung Research': 'samsung-logo.png',
       'ZoneTV': 'zoneify-logo.png',
@@ -62,6 +65,7 @@ function Experience({ data }) {
     }
 
     const companyUrlMap = {
+      'Priceline.com': 'https://www.priceline.com',
       'Loblaw Digital': 'https://www.loblawdigital.co',
       'Samsung Research': 'https://research.samsung.com/srbd',
       'ZoneTV': 'https://zone.tv/',
