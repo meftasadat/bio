@@ -12,14 +12,6 @@ RUN npm run build
 
 FROM python:3.13-slim
 
-# Install LaTeX (pdflatex) for resume PDF generation
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    texlive-latex-base \
-    texlive-latex-extra \
-    texlive-fonts-recommended \
-    texlive-latex-recommended \
-    && rm -rf /var/lib/apt/lists/*
-
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 

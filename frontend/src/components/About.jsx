@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './About.css'
+import { IS_DEV } from '../lib/api.js'
 import ResumeModal from './ResumeModal'
 
 function About({ data }) {
@@ -79,21 +80,30 @@ function About({ data }) {
               </div>
 
               <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-                <button className="resume-button" onClick={() => setShowResumeModal(true)}>
-                  <i className="fas fa-file-pdf" style={{ marginRight: '0.5rem' }}></i>
-                  Download Resume
-                </button>
+                {IS_DEV ? (
+                  <button className="resume-button" onClick={() => setShowResumeModal(true)}>
+                    <i className="fas fa-file-pdf" style={{ marginRight: '0.5rem' }}></i>
+                    Download Resume
+                  </button>
+                ) : (
+                  <a className="resume-button" href="/static/resume.pdf" download="Mefta_Sadat_Resume.pdf">
+                    <i className="fas fa-file-pdf" style={{ marginRight: '0.5rem' }}></i>
+                    Download Resume
+                  </a>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <ResumeModal
-      isOpen={showResumeModal}
-      onClose={() => setShowResumeModal(false)}
-      data={data}
-    />
+    {IS_DEV && (
+      <ResumeModal
+        isOpen={showResumeModal}
+        onClose={() => setShowResumeModal(false)}
+        data={data}
+      />
+    )}
     </>
   )
 }
