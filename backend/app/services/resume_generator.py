@@ -41,12 +41,30 @@ def _format_date(d: Optional[date_type]) -> str:
     return d.strftime("%b %Y")
 
 
-def _strip_markdown_bullet(line: str) -> str:
-    """Strip leading '- ' from markdown bullet lines."""
+import re
+
+def _parse_bullet_with_links(line: str) -> str:
+    """Strip leading '- ' from markdown bullet lines, remove HTML, escape latex, and convert markdown links to \\href."""
     stripped = line.strip()
     if stripped.startswith("- "):
-        return stripped[2:]
-    return stripped
+        stripped = stripped[2:]
+    # Remove HTML tags entirely
+    stripped = re.sub(r'<[^>]+>', '', stripped)
+    
+    # Process markdown links and normal text
+    parts = re.split(r'(\[[^\]]+\]\([^)]+\))', stripped)
+    result = ""
+    for part in parts:
+        match = re.match(r'^\[([^\]]+)\]\(([^)]+)\)$', part)
+        if match:
+            text = match.group(1)
+            url = match.group(2)
+            # URL special characters mapping for hyperref
+            safe_url = url.replace('%', r'\%').replace('#', r'\#')
+            result += rf"\\href{{{safe_url}}}{{{_escape_latex(text)}}}"
+        else:
+            result += _escape_latex(part)
+    return result
 
 
 def generate_resume_latex(
@@ -170,7 +188,7 @@ def generate_resume_latex(
                 if bullet_lines:
                     lines.append(r"\begin{itemize}[leftmargin=1.2em,itemsep=2pt,parsep=0pt,topsep=4pt]")
                     for bl in bullet_lines:
-                        clean = _escape_latex(_strip_markdown_bullet(bl))
+                        clean = _parse_bullet_with_links(bl)
                         lines.append(rf"  \item {{\color{{bodytext}} {clean}}}")
                     lines.append(r"\end{itemize}")
                 lines.append(r"\vspace{4pt}")
@@ -279,6 +297,7 @@ def compile_latex_to_pdf(latex_source: str) -> Path:
             ],
             capture_output=True,
             text=True,
+            errors="replace",
             timeout=30,
         )
 

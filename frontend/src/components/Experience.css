@@ -249,6 +249,15 @@
   color: var(--text-color);
 }
 
+.chatgpt-app-image {
+  max-width: 100%;
+  width: 600px;
+  border-radius: 8px;
+  margin: 10px auto 15px auto;
+  display: block;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .experience-timeline {

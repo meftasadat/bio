@@ -12,7 +12,7 @@ from mdit_py_plugins.tasklists import tasklists_plugin
 
 def _build_renderer() -> MarkdownIt:
     return (
-        MarkdownIt("commonmark", {"html": False, "linkify": True, "typographer": True})
+        MarkdownIt("commonmark", {"html": True, "linkify": True, "typographer": True})
         .enable("table")
         .enable("strikethrough")
         .use(footnote_plugin)
@@ -32,6 +32,7 @@ ALLOWED_TAGS: Iterable[str] = bleach.sanitizer.ALLOWED_TAGS.union(
         "code",
         "hr",
         "span",
+        "br",
         "table",
         "thead",
         "tbody",
@@ -57,7 +58,7 @@ ALLOWED_TAGS: Iterable[str] = bleach.sanitizer.ALLOWED_TAGS.union(
 ALLOWED_ATTRIBUTES = {
     **bleach.sanitizer.ALLOWED_ATTRIBUTES,
     "a": ["href", "title", "target", "rel"],
-    "img": ["src", "alt", "title"],
+    "img": ["src", "alt", "title", "class"],
     "code": ["class"],
     "pre": ["class"],
     "span": ["class"],
