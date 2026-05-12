@@ -26,7 +26,10 @@ def main():
         'blogs': False,
     }
     
-    latex = generate_resume_latex(bio, sections)
+    # Exclude samsung-rnd (Bangladesh)
+    experience_ids = ['priceline', 'loblaw-digital', 'zonetv', 'ibm-cas', 'tmu-research']
+    
+    latex = generate_resume_latex(bio, sections, experience_ids=experience_ids)
     tmp_pdf_path = compile_latex_to_pdf(latex)
     
     target1 = Path('app/static/resume.pdf')
