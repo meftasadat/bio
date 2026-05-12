@@ -249,6 +249,19 @@
   color: var(--text-color);
 }
 
+.experience-description.rich-text a {
+  color: hsl(220, 70%, 50%);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.experience-description.rich-text a:hover {
+  color: hsl(260, 70%, 50%);
+  text-decoration-color: hsl(260, 70%, 50%);
+}
+
 .chatgpt-app-image {
   max-width: 100%;
   width: 600px;
