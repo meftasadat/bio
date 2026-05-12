@@ -10,7 +10,7 @@ publications:
       - Andriy Miranskyy
     pages: "527-530"
     publisher: IEEE
-    url: https://dl.acm.org/doi/10.1109/MSR.2017.46
+    url: https://ieeexplore.ieee.org/document/7962413
     summary: >
       Introduced an openly available dataset that links duplicate bug reports
       across Apache, Eclipse, and KDE ecosystems. Demonstrated how richer
