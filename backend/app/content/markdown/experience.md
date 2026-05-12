@@ -6,10 +6,17 @@ experiences:
     location: Toronto, Canada
     start_date: 2026-03-01
     description: |
-      - Building and scaling AI/ML platform infrastructure at Priceline.com.
+      - Leading the architecture and development of Priceline's centralized AI/ML platform to safely scale intelligent applications. Building a comprehensive suite of foundational services, including an AI and MCP Gateway for routing, unified AI Observability, and Evals as a Service for scaling evals across projects, all protected by robust AI Governance and Guardrails.
+      - Accelerating platform adoption across engineering teams by developing an internal CLI tool that instantly scaffolds new ML/AI projects. The tool drastically reduces developer onboarding time and ensures company-wide consistency by automatically provisioning standardized structures, CI/CD pipelines, and essential platform integrations.
     technologies:
       - AI/ML
       - Platform Engineering
+      - AI Observability
+      - MCP Gateway
+      - AI Governance
+      - AI Safety
+      - Guardrails
+      - LLM Evaluation
 
   - id: loblaw-digital
     company: Loblaw Digital
