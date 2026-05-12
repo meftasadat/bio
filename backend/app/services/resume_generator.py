@@ -61,7 +61,7 @@ def _parse_bullet_with_links(line: str) -> str:
             url = match.group(2)
             # URL special characters mapping for hyperref
             safe_url = url.replace('%', r'\%').replace('#', r'\#')
-            result += rf"\\href{{{safe_url}}}{{{_escape_latex(text)}}}"
+            result += rf"\href{{{safe_url}}}{{{_escape_latex(text)}}}"
         else:
             result += _escape_latex(part)
     return result
