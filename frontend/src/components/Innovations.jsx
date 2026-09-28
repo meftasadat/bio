@@ -34,17 +34,6 @@ const PROJECTS = [
     links: [
       { label: 'Case Study on Medium', url: 'https://medium.com/loblaw-digital/unlocking-experimentation-with-helios-recommendation-engine-ff91d697b943' }
     ]
-  },
-  {
-    id: 'kick-app',
-    company: 'Independent Project',
-    role: 'Creator & Engineer',
-    period: '2026',
-    title: 'Kick — Pregnancy & Contraction Tracker',
-    description: 'Designed and engineered a privacy-first mobile pregnancy application for expecting parents, built with local device storage and zero cloud tracking. Features include kick counter, contraction timer, milestone tracking, and hospital bag checklist.',
-    links: [
-      { label: 'Google Play Store', url: 'https://play.google.com/store/apps/details?id=xyz.meftasadat.kick' }
-    ]
   }
 ]
 

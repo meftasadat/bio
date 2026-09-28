@@ -13,6 +13,7 @@ import Publications from './components/Publications'
 import Blog from './components/Blog'
 import BlogPost from './components/BlogPost'
 import Footer from './components/Footer'
+import SEO from './components/SEO'
 
 // Modals
 import ResumeModal from './components/ResumeModal'
@@ -65,6 +66,7 @@ function App() {
 
   return (
     <div className="App">
+      <SEO />
       {isAppLegalPage ? (
         <main>
           <Routes>

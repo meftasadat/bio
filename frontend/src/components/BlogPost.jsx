@@ -14,6 +14,16 @@ function BlogPost() {
     fetchBlogPost()
   }, [slug])
 
+  useEffect(() => {
+    if (post?.title) {
+      document.title = `${post.title} | Mefta Sadat`
+      const descMeta = document.querySelector('meta[name="description"]')
+      if (descMeta && (post.excerpt || post.subtitle)) {
+        descMeta.setAttribute('content', post.excerpt || post.subtitle)
+      }
+    }
+  }, [post])
+
   const fetchBlogPost = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/blog/slug/${slug}`)

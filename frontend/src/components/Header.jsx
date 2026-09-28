@@ -159,6 +159,8 @@ function Header({ onOpenResume }) {
               src="/static/bio-img.JPG"
               alt="Mefta Sadat"
               className="site-logo"
+              width="44"
+              height="44"
             />
             <h1 className="site-name">Mefta Sadat</h1>
           </Link>

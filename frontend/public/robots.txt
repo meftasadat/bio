@@ -1,6 +1,7 @@
 # Allow all user-agents to crawl the site.
 User-agent: *
 Allow: /
+Disallow: /apps/
 
 # Point to the sitemap.
 Sitemap: https://meftasadat.xyz/sitemap.xml
