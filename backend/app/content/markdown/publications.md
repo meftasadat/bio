@@ -1,21 +1,5 @@
 ---
 publications:  
-  - id: msr-2017-rediscovery
-    title: "Rediscovery datasets: Connecting duplicate reports"
-    venue: "2017 IEEE/ACM 14th International Conference on Mining Software Repositories (MSR)"
-    date: 2017-05-20
-    authors:
-      - Mefta Sadat
-      - Ayse Basar Bener
-      - Andriy Miranskyy
-    pages: "527-530"
-    publisher: IEEE
-    url: https://ieeexplore.ieee.org/document/7962413
-    summary: >
-      Introduced an openly available dataset that links duplicate bug reports
-      across Apache, Eclipse, and KDE ecosystems. Demonstrated how richer
-      linking improves prioritization models and downstream triage accuracy.
-
   - id: cascon-2017-preferences
     title: "A probabilistic approach for modelling user preferences in recommender systems"
     venue: "CASCON"
@@ -31,6 +15,32 @@ publications:
     url: https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:2osOgNQ5qMEC
     summary: >
       Probabilistic modeling of user preferences in recommender systems.
+
+  - id: thesis-2017-rediscovery
+    title: "On Predicting Rediscoveries of Software Defects"
+    venue: "Toronto Metropolitan University"
+    date: 2017-06-06
+    authors:
+      - Mefta Sadat
+    url: https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:UeHWp8X0CEIC
+    summary: >
+      Thesis on predicting rediscoveries of software defects.
+
+  - id: msr-2017-rediscovery
+    title: "Rediscovery datasets: Connecting duplicate reports"
+    venue: "2017 IEEE/ACM 14th International Conference on Mining Software Repositories (MSR)"
+    date: 2017-05-20
+    authors:
+      - Mefta Sadat
+      - Ayse Basar Bener
+      - Andriy Miranskyy
+    pages: "527-530"
+    publisher: IEEE
+    url: https://ieeexplore.ieee.org/document/7962413
+    summary: >
+      Introduced an openly available dataset that links duplicate bug reports
+      across Apache, Eclipse, and KDE ecosystems. Demonstrated how richer
+      linking improves prioritization models and downstream triage accuracy.
 
   - id: cascon-2016-watson
     title: "Preliminary investigation on user interaction with ibm watson analytics"
@@ -48,16 +58,6 @@ publications:
     url: https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:qjMakFHDy7sC
     summary: >
       Investigation of user interactions with IBM Watson Analytics.
-
-  - id: thesis-2017-rediscovery
-    title: "On Predicting Rediscoveries of Software Defects"
-    venue: "Toronto Metropolitan University"
-    date: 2017-06-06
-    authors:
-      - Mefta Sadat
-    url: https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:UeHWp8X0CEIC
-    summary: >
-      Thesis on predicting rediscoveries of software defects.
 
   - id: iccit-2014-affection
     title: "Recognition of human affection in smartphone perspective based on accelerometer and user's sitting position"

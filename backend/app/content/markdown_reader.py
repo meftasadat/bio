@@ -168,6 +168,9 @@ class MarkdownReader:
                 )
             )
 
+        # Sort publications newest first
+        publications.sort(key=lambda p: p.date, reverse=True)
+
         # Create bio object
         bio = Bio(
             name=bio_frontmatter.get('name', ''),

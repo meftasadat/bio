@@ -6,6 +6,11 @@ function Publications({ data = [], articles = [] }) {
 
   if ((!data || data.length === 0) && (!articles || articles.length === 0)) return null
 
+  const sortedPublications = [...(data || [])].sort((a, b) => new Date(b.date) - new Date(a.date))
+  const sortedArticles = [...(articles || [])].sort(
+    (a, b) => new Date(b.published_at || b.date) - new Date(a.published_at || a.date)
+  )
+
   const getBibtex = (pub) => {
     const key = pub.id || 'sadat'
     const authors = (pub.authors || []).join(' and ')
@@ -34,7 +39,7 @@ function Publications({ data = [], articles = [] }) {
       </h2>
 
       <ul className="entry-list">
-        {data.map((pub) => {
+        {sortedPublications.map((pub) => {
           const isCopied = copiedId === pub.id
           const year = pub.date ? pub.date.split('-')[0] : ''
 
@@ -88,7 +93,7 @@ function Publications({ data = [], articles = [] }) {
             Engineering Articles & Case Studies
           </h3>
           <ul className="entry-list">
-            {articles.map((article) => {
+            {sortedArticles.map((article) => {
               const year = article.published_at ? article.published_at.split('-')[0] : ''
               return (
                 <li key={article.id} className="entry-item">

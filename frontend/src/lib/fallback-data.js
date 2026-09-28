@@ -1,6 +1,6 @@
 export const FALLBACK_PORTFOLIO_DATA = {
   name: 'Mefta Sadat',
-  title: 'Staff ML Engineer',
+  title: 'Staff ML Developer',
   summary: 'I specialize in MLOps and Agentic AI. 13+ years of experience.',
   about: `I build systems that bring artificial intelligence into the real world. Over the last 13+ years, my focus has been on the messy, fascinating intersection of frontier AI and production engineering—turning research, foundation models, and autonomous agents into distributed software that reliably serves millions.
 
@@ -13,7 +13,7 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
     {
       id: 'priceline',
       company: 'Priceline.com',
-      position: 'Staff ML Engineer',
+      position: 'Staff ML Developer',
       location: 'Toronto, Canada',
       start_date: '2026-03-01',
       end_date: null,
@@ -33,7 +33,7 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
     {
       id: 'loblaw-digital',
       company: 'Loblaw Digital',
-      position: 'Staff ML Engineer',
+      position: 'Staff ML Software Engineer',
       location: 'Toronto, Canada',
       start_date: '2018-08-01',
       end_date: '2026-03-01',
@@ -179,15 +179,6 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
   ],
   publications: [
     {
-      id: 'msr-2017-rediscovery',
-      title: 'Rediscovery datasets: Connecting duplicate reports',
-      venue: '2017 IEEE/ACM 14th International Conference on Mining Software Repositories (MSR)',
-      date: '2017-05-20',
-      authors: ['Mefta Sadat', 'Ayse Basar Bener', 'Andriy Miranskyy'],
-      url: 'https://ieeexplore.ieee.org/document/7962413',
-      summary: 'Introduced an openly available dataset that links duplicate bug reports across Apache, Eclipse, and KDE ecosystems. Demonstrated how richer linking improves prioritization models and downstream triage accuracy.'
-    },
-    {
       id: 'cascon-2017-preferences',
       title: 'A probabilistic approach for modelling user preferences in recommender systems',
       venue: 'CASCON',
@@ -197,15 +188,6 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
       summary: 'Probabilistic modeling of user preferences in recommender systems.'
     },
     {
-      id: 'cascon-2016-watson',
-      title: 'Preliminary investigation on user interaction with ibm watson analytics',
-      venue: 'Proceedings of the 26th Annual International Conference on Computer Science and Software Engineering',
-      date: '2016-10-31',
-      authors: ['Parisa Lak', 'Mefta Sadat', 'Carl Julien Barrelet', 'Martin Petitclerc', 'Andriy Miranskyy', 'Craig Statchuk', 'Ayse Basar Bener'],
-      url: 'https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:qjMakFHDy7sC',
-      summary: 'Investigation of user interactions with IBM Watson Analytics.'
-    },
-    {
       id: 'thesis-2017-rediscovery',
       title: 'On Predicting Rediscoveries of Software Defects',
       venue: 'Toronto Metropolitan University',
@@ -213,6 +195,24 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
       authors: ['Mefta Sadat'],
       url: 'https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:UeHWp8X0CEIC',
       summary: 'Master of Science thesis on predicting rediscoveries of software defects.'
+    },
+    {
+      id: 'msr-2017-rediscovery',
+      title: 'Rediscovery datasets: Connecting duplicate reports',
+      venue: '2017 IEEE/ACM 14th International Conference on Mining Software Repositories (MSR)',
+      date: '2017-05-20',
+      authors: ['Mefta Sadat', 'Ayse Basar Bener', 'Andriy Miranskyy'],
+      url: 'https://ieeexplore.ieee.org/document/7962413',
+      summary: 'Introduced an openly available dataset that links duplicate bug reports across Apache, Eclipse, and KDE ecosystems. Demonstrated how richer linking improves prioritization models and downstream triage accuracy.'
+    },
+    {
+      id: 'cascon-2016-watson',
+      title: 'Preliminary investigation on user interaction with ibm watson analytics',
+      venue: 'Proceedings of the 26th Annual International Conference on Computer Science and Software Engineering',
+      date: '2016-10-31',
+      authors: ['Parisa Lak', 'Mefta Sadat', 'Carl Julien Barrelet', 'Martin Petitclerc', 'Andriy Miranskyy', 'Craig Statchuk', 'Ayse Basar Bener'],
+      url: 'https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:qjMakFHDy7sC',
+      summary: 'Investigation of user interactions with IBM Watson Analytics.'
     },
     {
       id: 'iccit-2014-affection',

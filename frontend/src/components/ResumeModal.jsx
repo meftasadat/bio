@@ -343,7 +343,9 @@ function ResumeModal({ isOpen, onClose, data }) {
               {selectedSections.publications && data.publications && data.publications.length > 0 && (
                 <div className="rp-section">
                   <h2 className="rp-section-title">Publications</h2>
-                  {data.publications.map(pub => (
+                  {[...(data.publications || [])]
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .map(pub => (
                     <div key={pub.id} className="rp-pub-item">
                       <strong className="rp-pub-title">{pub.title}</strong>
                       <p className="rp-pub-meta">

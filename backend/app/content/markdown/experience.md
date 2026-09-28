@@ -2,7 +2,7 @@
 experiences:
   - id: priceline
     company: Priceline.com
-    position: Staff ML Engineer
+    position: Staff ML Developer
     location: Toronto, Canada
     start_date: 2026-03-01
     description: |
@@ -20,7 +20,7 @@ experiences:
 
   - id: loblaw-digital
     company: Loblaw Digital
-    position: Staff ML Engineer
+    position: Staff ML Software Engineer
     location: Toronto, Canada
     start_date: 2018-08-01
     end_date: 2026-03-01

@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const DEFAULT_TITLE = 'Mefta Sadat | Staff ML Engineer'
-const DEFAULT_DESC = 'Mefta Sadat — Staff ML Engineer at Priceline. Specializing in MLOps, Agentic AI, and GenAI productionization at scale.'
+const DEFAULT_TITLE = 'Mefta Sadat | Staff ML Developer'
+const DEFAULT_DESC = 'Mefta Sadat — Staff ML Developer at Priceline. Specializing in MLOps, Agentic AI, and GenAI productionization at scale.'
 
 const ROUTE_METADATA = {
   '/': {
@@ -11,7 +11,7 @@ const ROUTE_METADATA = {
   },
   '/about': {
     title: 'About | Mefta Sadat',
-    description: 'Staff ML Engineer at Priceline specializing in central AI/ML platforms, MLOps, and agentic AI systems.',
+    description: 'Staff ML Developer at Priceline specializing in central AI/ML platforms, MLOps, and agentic AI systems.',
   },
   '/work': {
     title: 'Work | Mefta Sadat',

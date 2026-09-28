@@ -1,6 +1,6 @@
 ---
 name: Mefta Sadat
-title: Staff ML Engineer
+title: Staff ML Developer
 summary: I specialize in MLOps and Agentic AI. 13+ years of experience.
 ---
 
