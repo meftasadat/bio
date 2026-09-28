@@ -6,7 +6,7 @@ experiences:
     location: Toronto, Canada
     start_date: 2026-03-01
     description: |
-      - Leading the architecture and development of Priceline's centralized AI/ML platform to productionize Generative AI and safely scale intelligent applications across the enterprise. Building foundational platform services including unified AI Observability, Evals as a Service for automated model benchmarking, and robust AI Governance and Guardrails.
+      - Leading the architecture and development of Priceline's centralized AI/ML platform to productionize ML and Generative AI and safely scale intelligent applications across the enterprise. Building foundational platform services including unified AI Observability, Evals as a Service for automated model benchmarking, and robust AI Governance and Guardrails.
       - Accelerating GenAI and ML productionization across engineering teams by developing an internal CLI tool that instantly scaffolds new ML/AI projects. The tool drastically reduces developer onboarding time and ensures company-wide consistency by automatically provisioning standardized structures, CI/CD pipelines, and essential platform integrations.
     technologies:
       - AI/ML Platform

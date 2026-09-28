@@ -10,7 +10,7 @@ function Hero({ data, onOpenResume }) {
       </p>
 
       <p>
-        Currently at <a href="https://www.priceline.com" target="_blank" rel="noopener noreferrer">Priceline.com</a> ✈️, I'm building the centralized AI/ML platform to productionize Generative AI across the enterprise.
+        Currently at <a href="https://www.priceline.com" target="_blank" rel="noopener noreferrer">Priceline.com</a> ✈️, I'm building the centralized AI/ML platform to productionize ML and Generative AI across the enterprise.
       </p>
 
       <p>

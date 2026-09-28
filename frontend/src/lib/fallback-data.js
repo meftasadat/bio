@@ -4,7 +4,7 @@ export const FALLBACK_PORTFOLIO_DATA = {
   summary: 'I specialize in MLOps and Agentic AI. 9+ YoE.',
   about: `I build systems that bring artificial intelligence into the real world. Over the last decade, my focus has been on the messy, fascinating intersection of frontier AI and production engineering—turning research, foundation models, and autonomous agents into distributed software that reliably serves millions.
 
-Currently at [Priceline.com](https://www.priceline.com) ✈️, I'm building the centralized AI/ML platform to productionize Generative AI across the enterprise.
+Currently at [Priceline.com](https://www.priceline.com) ✈️, I'm building the centralized AI/ML platform to productionize ML and Generative AI across the enterprise.
 
 Previously at [Loblaw Digital](https://www.loblawdigital.co/) 🛒, I architected the [PC Express ChatGPT app](https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc) (Canada’s first grocery app on the ChatGPT store), created Alfred (an enterprise multi-agent orchestration engine), and built the Helios Recommendation Engine.
 
@@ -18,11 +18,11 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
       start_date: '2026-03-01',
       end_date: null,
       description: `<ul>
-        <li>Leading the architecture and development of Priceline's centralized AI/ML platform to productionize Generative AI and safely scale intelligent applications across the enterprise. Building foundational platform services including unified AI Observability, Evals as a Service for automated model benchmarking, and robust AI Governance and Guardrails.</li>
+        <li>Leading the architecture and development of Priceline's centralized AI/ML platform to productionize ML and Generative AI and safely scale intelligent applications across the enterprise. Building foundational platform services including unified AI Observability, Evals as a Service for automated model benchmarking, and robust AI Governance and Guardrails.</li>
         <li>Accelerating GenAI and ML productionization across engineering teams by developing an internal CLI tool that instantly scaffolds new ML/AI projects. The tool drastically reduces developer onboarding time and ensures company-wide consistency by automatically provisioning standardized structures, CI/CD pipelines, and essential platform integrations.</li>
       </ul>`,
       description_html: `<ul>
-        <li>Leading the architecture and development of Priceline's centralized AI/ML platform to productionize Generative AI and safely scale intelligent applications across the enterprise. Building foundational platform services including unified AI Observability, Evals as a Service for automated model benchmarking, and robust AI Governance and Guardrails.</li>
+        <li>Leading the architecture and development of Priceline's centralized AI/ML platform to productionize ML and Generative AI and safely scale intelligent applications across the enterprise. Building foundational platform services including unified AI Observability, Evals as a Service for automated model benchmarking, and robust AI Governance and Guardrails.</li>
         <li>Accelerating GenAI and ML productionization across engineering teams by developing an internal CLI tool that instantly scaffolds new ML/AI projects. The tool drastically reduces developer onboarding time and ensures company-wide consistency by automatically provisioning standardized structures, CI/CD pipelines, and essential platform integrations.</li>
       </ul>`,
       technologies: [
