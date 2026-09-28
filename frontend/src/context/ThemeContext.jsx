@@ -4,10 +4,15 @@ const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('bio-theme')
-    if (saved === 'light' || saved === 'dark') return saved
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      return 'light'
+    if (typeof window === 'undefined') return 'dark'
+    try {
+      const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('bio-theme') : null
+      if (saved === 'light' || saved === 'dark') return saved
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light'
+      }
+    } catch {
+      // Ignore security errors in restricted iframe/SSR environments
     }
     return 'dark'
   })

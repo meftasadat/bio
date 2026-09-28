@@ -6,7 +6,7 @@ function Hero({ data, onOpenResume }) {
   return (
     <section className="about-section" id="about">
       <p>
-        I build systems that bring artificial intelligence into the real world. Over the last decade, my focus has been on the messy, fascinating intersection of frontier AI and production engineering—turning research, foundation models, and autonomous agents into distributed software that reliably serves millions.
+        I build systems that bring artificial intelligence into the real world. Over the last 13+ years, my focus has been on the messy, fascinating intersection of frontier AI and production engineering—turning research, foundation models, and autonomous agents into distributed software that reliably serves millions.
       </p>
 
       <p>
@@ -14,15 +14,15 @@ function Hero({ data, onOpenResume }) {
       </p>
 
       <p>
-        Previously at <a href="https://www.loblawdigital.co/" target="_blank" rel="noopener noreferrer">Loblaw Digital</a> 🛒, I architected the{' '}
+        Previously at <a href="https://www.loblawdigital.co/" target="_blank" rel="noopener noreferrer">Loblaw Digital</a> 🛒, I architected Canada’s first grocery app on the ChatGPT store ({' '}
         <a
           href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc"
           target="_blank"
           rel="noopener noreferrer"
         >
           PC Express ChatGPT app
-        </a>{' '}
-        (Canada’s first grocery app on the ChatGPT store), created <strong>Alfred</strong> (an enterprise multi-agent orchestration engine), and built the <strong>Helios Recommendation Engine</strong>.
+        </a>
+        ), created <strong>Alfred</strong> (an enterprise multi-agent orchestration engine), and deployed LLM infrastructure processing 15M+ prompts weekly while building an in-house recommendation engine that drove $200K+/year in cost savings.
       </p>
 
       <p className="about-social">

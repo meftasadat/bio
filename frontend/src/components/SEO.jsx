@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const DEFAULT_TITLE = 'Mefta Sadat | Staff ML Engineer & AI Platform Architect'
-const DEFAULT_DESC = 'Mefta Sadat — Staff ML Engineer, AI/ML Platform at Priceline. Specializing in MLOps, Agentic AI, and GenAI productionization at scale.'
+const DEFAULT_TITLE = 'Mefta Sadat | Staff ML Engineer'
+const DEFAULT_DESC = 'Mefta Sadat — Staff ML Engineer at Priceline. Specializing in MLOps, Agentic AI, and GenAI productionization at scale.'
 
 const ROUTE_METADATA = {
   '/': {
@@ -26,11 +26,11 @@ const ROUTE_METADATA = {
     description: 'Conference presentations, tech talks, and appearances on MLOps and Generative AI by Mefta Sadat.',
   },
   '/publications': {
-    title: 'Publications & Research | Mefta Sadat',
-    description: 'Research publications, papers, and citations by Mefta Sadat in distributed systems and ML.',
+    title: 'Publications | Mefta Sadat',
+    description: 'Research publications and citations by Mefta Sadat in distributed systems and ML.',
   },
   '/blog': {
-    title: 'Writing & Articles | Mefta Sadat',
+    title: 'Articles | Mefta Sadat',
     description: 'Articles and case studies on recommendation engines, MLOps, and agentic AI by Mefta Sadat.',
   },
 }

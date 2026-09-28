@@ -2,32 +2,30 @@
 experiences:
   - id: priceline
     company: Priceline.com
-    position: Staff ML Developer
+    position: Staff ML Engineer
     location: Toronto, Canada
     start_date: 2026-03-01
     description: |
-      - Leading the architecture and development of Priceline's centralized AI/ML platform to productionize ML and Generative AI and safely scale intelligent applications across the enterprise. Building foundational platform services including unified AI Observability, Evals as a Service for automated model benchmarking, and robust AI Governance and Guardrails.
-      - Accelerating GenAI and ML productionization across engineering teams by developing an internal CLI tool that instantly scaffolds new ML/AI projects. The tool drastically reduces developer onboarding time and ensures company-wide consistency by automatically provisioning standardized structures, CI/CD pipelines, and essential platform integrations.
+      - Leading the architecture of Priceline's centralized AI/ML platform, the shared foundation teams use to take ML and generative AI from prototype to production safely and consistently.
+      - Building developer tooling and platform standards that cut the time to launch a new ML or AI project from weeks to days, with CI/CD, observability, and evaluation built in from day one.
     technologies:
       - AI/ML Platform
       - Generative AI
-      - GenAI Productionization
+      - LLMOps
       - Platform Engineering
+      - Developer Tooling
+      - Model Evaluation
       - AI Observability
-      - Evals as a Service
-      - AI Governance
-      - AI Safety
-      - Guardrails
-      - LLM Evaluation
+      - AI Safety & Guardrails
 
   - id: loblaw-digital
     company: Loblaw Digital
-    position: Staff ML Software Engineer
+    position: Staff ML Engineer
     location: Toronto, Canada
     start_date: 2018-08-01
     end_date: 2026-03-01
     description: |
-      - Led and built the first ever Canadian ChatGPT grocery app (PC Express) on the ChatGPT store, enabling customers to plan meals and add ingredients seamlessly to their cart. [View on ChatGPT](https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc) • [Read the Press Release](https://www.loblaw.ca/en/loblaw-advances-ai-in-canadian-retail-with-first-of-its-kind-shopping-app-in-chatgpt/)<br/><a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer" class="chatgpt-app-link"><img src="https://dis-prod.assetful.loblaw.ca/content/dam/loblaw-companies-limited/creative-assets/loblaw-ca/openai/EN%20Birthday%20Party%20PR%20Asset.png/_jcr_content/renditions/cq5dam.web.4096.4096.jpeg" alt="PC Express ChatGPT App" class="chatgpt-app-image" /></a>
+      - Led and built the first ever Canadian ChatGPT grocery app (PC Express) on the ChatGPT store, enabling customers to plan meals and add ingredients seamlessly to their cart. [View on ChatGPT](https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc) • [Read the Press Release](https://www.loblaw.ca/en/loblaw-advances-ai-in-canadian-retail-with-first-of-its-kind-shopping-app-in-chatgpt/)<br/><a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer" class="chatgpt-app-link"><img src="/static/pc-express-chatgpt.webp" alt="PC Express ChatGPT App" class="chatgpt-app-image" /></a>
       - Led the development of Alfred, an internal agent orchestration engine powering many conversational AI applications across the organization. Architected the solution using LangGraph, LangFuse, LiteLLM, Gradio, and MCP servers to enable scalable agentic workflows.
       - Designed and deployed enterprise-scale LLM infrastructure incorporating LLMOps best practices. Implemented batch prediction, monitoring, and orchestration systems processing 15 million prompts weekly, leveraging Qdrant for vector search, Vertex AI for ML infrastructure, and Airflow for workflow orchestration.
       - Established the company's MLOps platform using Kubernetes, Vertex AI, Seldon, Prometheus, and Grafana, enabling data scientists to streamline the path from exploratory analysis to production deployment. Developed an in-house recommendation engine that eliminated third-party dependencies, resulting in $200K+ annual cost savings.

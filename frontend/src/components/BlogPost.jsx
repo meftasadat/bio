@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import axios from 'axios'
 import './BlogPost.css'
 import { API_BASE_URL } from '../lib/api'
 
@@ -26,8 +25,9 @@ function BlogPost() {
 
   const fetchBlogPost = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/blog/slug/${slug}`)
-      const data = response.data
+      const response = await fetch(`${API_BASE_URL}/blog/slug/${slug}`)
+      if (!response.ok) throw new Error('Blog post not found')
+      const data = await response.json()
       setPost(data)
       setLoading(false)
       // Redirect to Medium after a short delay

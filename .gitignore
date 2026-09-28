@@ -224,3 +224,4 @@ __marimo__/
 
 # Compiled frontend bundle in backend static
 backend/app/static/web/
+frontend/dist-ssr/

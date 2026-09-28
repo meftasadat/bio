@@ -1,50 +1,50 @@
 export const FALLBACK_PORTFOLIO_DATA = {
   name: 'Mefta Sadat',
-  title: 'Staff ML Developer',
-  summary: 'I specialize in MLOps and Agentic AI. 9+ YoE.',
-  about: `I build systems that bring artificial intelligence into the real world. Over the last decade, my focus has been on the messy, fascinating intersection of frontier AI and production engineering—turning research, foundation models, and autonomous agents into distributed software that reliably serves millions.
+  title: 'Staff ML Engineer',
+  summary: 'I specialize in MLOps and Agentic AI. 13+ years of experience.',
+  about: `I build systems that bring artificial intelligence into the real world. Over the last 13+ years, my focus has been on the messy, fascinating intersection of frontier AI and production engineering—turning research, foundation models, and autonomous agents into distributed software that reliably serves millions.
 
 Currently at [Priceline.com](https://www.priceline.com) ✈️, I'm building the centralized AI/ML platform to productionize ML and Generative AI across the enterprise.
 
-Previously at [Loblaw Digital](https://www.loblawdigital.co/) 🛒, I architected the [PC Express ChatGPT app](https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc) (Canada’s first grocery app on the ChatGPT store), created Alfred (an enterprise multi-agent orchestration engine), and built the Helios Recommendation Engine.
+Previously at [Loblaw Digital](https://www.loblawdigital.co/) 🛒, I architected Canada’s first grocery app on the ChatGPT store ([PC Express](https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc)), created Alfred (an enterprise multi-agent orchestration engine), and deployed LLM infrastructure processing 15M+ prompts weekly while building an in-house recommendation engine that drove $200K+/year in cost savings.
 
 Outside tech, I like to explore the latest in AI and spend time in nature. I'm also an avid traveler (5 continents and counting!).`,
   experience: [
     {
       id: 'priceline',
       company: 'Priceline.com',
-      position: 'Staff ML Developer',
+      position: 'Staff ML Engineer',
       location: 'Toronto, Canada',
       start_date: '2026-03-01',
       end_date: null,
       description: `<ul>
-        <li>Leading the architecture and development of Priceline's centralized AI/ML platform to productionize ML and Generative AI and safely scale intelligent applications across the enterprise. Building foundational platform services including unified AI Observability, Evals as a Service for automated model benchmarking, and robust AI Governance and Guardrails.</li>
-        <li>Accelerating GenAI and ML productionization across engineering teams by developing an internal CLI tool that instantly scaffolds new ML/AI projects. The tool drastically reduces developer onboarding time and ensures company-wide consistency by automatically provisioning standardized structures, CI/CD pipelines, and essential platform integrations.</li>
+        <li>Leading the architecture of Priceline's centralized AI/ML platform, the shared foundation teams use to take ML and generative AI from prototype to production safely and consistently.</li>
+        <li>Building developer tooling and platform standards that cut the time to launch a new ML or AI project from weeks to days, with CI/CD, observability, and evaluation built in from day one.</li>
       </ul>`,
       description_html: `<ul>
-        <li>Leading the architecture and development of Priceline's centralized AI/ML platform to productionize ML and Generative AI and safely scale intelligent applications across the enterprise. Building foundational platform services including unified AI Observability, Evals as a Service for automated model benchmarking, and robust AI Governance and Guardrails.</li>
-        <li>Accelerating GenAI and ML productionization across engineering teams by developing an internal CLI tool that instantly scaffolds new ML/AI projects. The tool drastically reduces developer onboarding time and ensures company-wide consistency by automatically provisioning standardized structures, CI/CD pipelines, and essential platform integrations.</li>
+        <li>Leading the architecture of Priceline's centralized AI/ML platform, the shared foundation teams use to take ML and generative AI from prototype to production safely and consistently.</li>
+        <li>Building developer tooling and platform standards that cut the time to launch a new ML or AI project from weeks to days, with CI/CD, observability, and evaluation built in from day one.</li>
       </ul>`,
       technologies: [
-        'AI/ML Platform', 'Generative AI', 'GenAI Productionization', 'Platform Engineering',
-        'AI Observability', 'Evals as a Service', 'AI Governance', 'AI Safety', 'Guardrails', 'LLM Evaluation'
+        'AI/ML Platform', 'Generative AI', 'LLMOps', 'Platform Engineering',
+        'Developer Tooling', 'Model Evaluation', 'AI Observability', 'AI Safety & Guardrails'
       ]
     },
     {
       id: 'loblaw-digital',
       company: 'Loblaw Digital',
-      position: 'Staff ML Software Engineer',
+      position: 'Staff ML Engineer',
       location: 'Toronto, Canada',
       start_date: '2018-08-01',
       end_date: '2026-03-01',
       description: `<ul>
-        <li>Led and built the first ever Canadian ChatGPT grocery app (PC Express) on the ChatGPT store, enabling customers to plan meals and add ingredients seamlessly to their cart. <a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer">View on ChatGPT</a> • <a href="https://www.loblaw.ca/en/loblaw-advances-ai-in-canadian-retail-with-first-of-its-kind-shopping-app-in-chatgpt/" target="_blank" rel="noopener noreferrer">Read the Press Release</a><br/><a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer" class="chatgpt-app-link"><img src="/static/pc-express-chatgpt.png" alt="PC Express ChatGPT App" class="chatgpt-app-image" /></a></li>
+        <li>Led and built the first ever Canadian ChatGPT grocery app (PC Express) on the ChatGPT store, enabling customers to plan meals and add ingredients seamlessly to their cart. <a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer">View on ChatGPT</a> • <a href="https://www.loblaw.ca/en/loblaw-advances-ai-in-canadian-retail-with-first-of-its-kind-shopping-app-in-chatgpt/" target="_blank" rel="noopener noreferrer">Read the Press Release</a><br/><a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer" class="chatgpt-app-link"><img src="/static/pc-express-chatgpt.webp" alt="PC Express ChatGPT App" class="chatgpt-app-image" /></a></li>
         <li>Led the development of Alfred, an internal agent orchestration engine powering many conversational AI applications across the organization. Architected the solution using LangGraph, LangFuse, LiteLLM, Gradio, and MCP servers to enable scalable agentic workflows.</li>
         <li>Designed and deployed enterprise-scale LLM infrastructure incorporating LLMOps best practices. Implemented batch prediction, monitoring, and orchestration systems processing 15 million prompts weekly, leveraging Qdrant for vector search, Vertex AI for ML infrastructure, and Airflow for workflow orchestration.</li>
         <li>Established the company's MLOps platform using Kubernetes, Vertex AI, Seldon, Prometheus, and Grafana, enabling data scientists to streamline the path from exploratory analysis to production deployment. Developed an in-house recommendation engine that eliminated third-party dependencies, resulting in $200K+ annual cost savings.</li>
       </ul>`,
       description_html: `<ul>
-        <li>Led and built the first ever Canadian ChatGPT grocery app (PC Express) on the ChatGPT store, enabling customers to plan meals and add ingredients seamlessly to their cart. <a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer">View on ChatGPT</a> • <a href="https://www.loblaw.ca/en/loblaw-advances-ai-in-canadian-retail-with-first-of-its-kind-shopping-app-in-chatgpt/" target="_blank" rel="noopener noreferrer">Read the Press Release</a><br/><a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer" class="chatgpt-app-link"><img src="/static/pc-express-chatgpt.png" alt="PC Express ChatGPT App" class="chatgpt-app-image" /></a></li>
+        <li>Led and built the first ever Canadian ChatGPT grocery app (PC Express) on the ChatGPT store, enabling customers to plan meals and add ingredients seamlessly to their cart. <a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer">View on ChatGPT</a> • <a href="https://www.loblaw.ca/en/loblaw-advances-ai-in-canadian-retail-with-first-of-its-kind-shopping-app-in-chatgpt/" target="_blank" rel="noopener noreferrer">Read the Press Release</a><br/><a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer" class="chatgpt-app-link"><img src="/static/pc-express-chatgpt.webp" alt="PC Express ChatGPT App" class="chatgpt-app-image" /></a></li>
         <li>Led the development of Alfred, an internal agent orchestration engine powering many conversational AI applications across the organization. Architected the solution using LangGraph, LangFuse, LiteLLM, Gradio, and MCP servers to enable scalable agentic workflows.</li>
         <li>Designed and deployed enterprise-scale LLM infrastructure incorporating LLMOps best practices. Implemented batch prediction, monitoring, and orchestration systems processing 15 million prompts weekly, leveraging Qdrant for vector search, Vertex AI for ML infrastructure, and Airflow for workflow orchestration.</li>
         <li>Established the company's MLOps platform using Kubernetes, Vertex AI, Seldon, Prometheus, and Grafana, enabling data scientists to streamline the path from exploratory analysis to production deployment. Developed an in-house recommendation engine that eliminated third-party dependencies, resulting in $200K+ annual cost savings.</li>
@@ -191,7 +191,7 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
       id: 'cascon-2017-preferences',
       title: 'A probabilistic approach for modelling user preferences in recommender systems',
       venue: 'CASCON',
-      date: '2017-01-01',
+      date: '2017-11-06',
       authors: ['Parisa Lak', 'Can Kavaklioglu', 'Mefta Sadat', 'Martin Petitclerc', 'Andriy V Miranskyy', 'Graham Wills', 'Ayse Basar Bener'],
       url: 'https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:2osOgNQ5qMEC',
       summary: 'Probabilistic modeling of user preferences in recommender systems.'
@@ -200,7 +200,7 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
       id: 'cascon-2016-watson',
       title: 'Preliminary investigation on user interaction with ibm watson analytics',
       venue: 'Proceedings of the 26th Annual International Conference on Computer Science and Software Engineering',
-      date: '2016-01-01',
+      date: '2016-10-31',
       authors: ['Parisa Lak', 'Mefta Sadat', 'Carl Julien Barrelet', 'Martin Petitclerc', 'Andriy Miranskyy', 'Craig Statchuk', 'Ayse Basar Bener'],
       url: 'https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=dIC_OowAAAAJ&citation_for_view=dIC_OowAAAAJ:qjMakFHDy7sC',
       summary: 'Investigation of user interactions with IBM Watson Analytics.'

@@ -15,7 +15,8 @@
    ========================================================================== */
 :root {
   color-scheme: dark;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   /* Dark theme (Default) */
   --theme-bg: 210deg 6% 12%;        /* #1c1e22 deep charcoal slate */
@@ -133,6 +134,19 @@ main {
    ========================================================================== */
 p {
   margin-bottom: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.75;
+}
+
+.about-section p,
+.exp-body,
+.exp-body p,
+.exp-body li,
+.entry-content,
+.arch-desc {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
   line-height: 1.75;
 }
 
@@ -171,6 +185,7 @@ a.plain-link:hover {
 }
 
 .section-heading {
+  font-family: var(--font-mono);
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.5;
@@ -195,6 +210,15 @@ a.plain-link:hover {
   margin-right: 0.45em;
   color: hsl(var(--theme-accent));
   font-weight: bold;
+}
+
+.entry-meta,
+.exp-heading,
+.exp-dates,
+.cite-btn,
+.text-btn,
+time {
+  font-family: var(--font-mono);
 }
 
 .meta-sep {

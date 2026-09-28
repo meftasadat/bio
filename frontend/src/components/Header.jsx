@@ -4,7 +4,7 @@ import './Header.css'
 import { useTheme } from '../context/ThemeContext'
 import { FEATURE_FLAGS } from '../lib/feature-flags'
 
-const SECTION_IDS = ['about', 'talks', 'writing', 'work']
+const SECTION_IDS = ['about', 'talks', 'publications', 'work']
 
 function Header({ onOpenResume }) {
   const location = useLocation()
@@ -19,7 +19,7 @@ function Header({ onOpenResume }) {
   const navLinks = [
     { id: 'about', path: '/#about', label: 'About' },
     { id: 'talks', path: '/#talks', label: 'Appearances' },
-    { id: 'writing', path: '/#writing', label: 'Writing' },
+    { id: 'publications', path: '/#publications', label: 'Publications' },
     { id: 'work', path: '/#work', label: 'Work' },
   ]
 
@@ -68,6 +68,9 @@ function Header({ onOpenResume }) {
     }
 
     setActiveSection(currentActive)
+    if (window.history.replaceState && currentActive && window.location.hash !== `#${currentActive}`) {
+      window.history.replaceState(null, '', `/#${currentActive}`)
+    }
   }, [location.pathname])
 
   // Active section scrollspy & interaction listeners
@@ -87,6 +90,9 @@ function Header({ onOpenResume }) {
       const targetHash = window.location.hash.replace('#', '')
       if (SECTION_IDS.includes(targetHash)) {
         setActiveSection(targetHash)
+        setTimeout(() => {
+          scrollWithRetry(targetHash)
+        }, 120)
       }
     } else {
       updateActiveSection()
@@ -197,6 +203,7 @@ function Header({ onOpenResume }) {
 
     if (path === '/' || path === '/#about') {
       setActiveSection('about')
+      window.history.pushState(null, '', '/#about')
       isManualScrollingRef.current = true
 
       clearTimeout(scrollEndTimerRef.current)
@@ -216,6 +223,7 @@ function Header({ onOpenResume }) {
 
     if (path.startsWith('/#')) {
       const targetId = path.replace('/#', '')
+      window.history.pushState(null, '', path)
       if (location.pathname === '/') {
         scrollToTarget(targetId)
       } else {
@@ -238,7 +246,8 @@ function Header({ onOpenResume }) {
             onClick={(e) => handleNavClick(e, '/#about')}
           >
             <img
-              src="/static/bio-img.JPG"
+              src="/static/bio-img.webp"
+              onError={(e) => { e.currentTarget.src = '/static/bio-img.JPG' }}
               alt="Mefta Sadat"
               className="site-logo"
               width="44"

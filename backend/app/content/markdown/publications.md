@@ -19,7 +19,7 @@ publications:
   - id: cascon-2017-preferences
     title: "A probabilistic approach for modelling user preferences in recommender systems"
     venue: "CASCON"
-    date: 2017-01-01
+    date: 2017-11-06
     authors:
       - Parisa Lak
       - Can Kavaklioglu
@@ -35,7 +35,7 @@ publications:
   - id: cascon-2016-watson
     title: "Preliminary investigation on user interaction with ibm watson analytics"
     venue: "Proceedings of the 26th Annual International Conference on Computer Science and Software Engineering"
-    date: 2016-01-01
+    date: 2016-10-31
     authors:
       - Parisa Lak
       - Mefta Sadat
