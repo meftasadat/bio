@@ -12,10 +12,11 @@ function Experience({ data }) {
     return `${d.toLocaleString('en-US', { month: 'short' })} ${d.getFullYear()}`
   }
 
-  const isStandalone = location.pathname === '/experience'
+  const isStandalone = location.pathname === '/work' || location.pathname === '/experience'
 
   return (
-    <section className="section" id="experience">
+    <section className="section" id="work">
+      <span id="experience" style={{ display: 'block', scrollMarginTop: '8.5rem' }} />
       {isStandalone && (
         <div className="standalone-nav-header">
           <Link to="/" className="back-home-link">
@@ -25,7 +26,7 @@ function Experience({ data }) {
       )}
 
       <h2 className="section-heading">
-        <a href="#experience">Experience</a>
+        <a href="#work">Work</a>
       </h2>
 
       <div className="experience-list">

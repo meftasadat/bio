@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import axios from 'axios'
 import './App.css'
 
 // Core Components
 import Header from './components/Header'
 import Hero from './components/Hero'
-import Innovations from './components/Innovations'
 import Experience from './components/Experience'
 import Talks from './components/Talks'
 import Publications from './components/Publications'
@@ -92,14 +91,12 @@ function App() {
                     />
                     <Talks data={portfolioData?.talks} />
                     <Blog posts={blogPosts} publications={portfolioData?.publications} />
-                    <Innovations />
                     <Experience data={portfolioData?.experience} />
                   </>
                 }
               />
 
               {/* Sub-routes for direct navigation */}
-              <Route path="/work" element={<Innovations />} />
               <Route
                 path="/about"
                 element={
@@ -110,8 +107,12 @@ function App() {
                 }
               />
               <Route
-                path="/experience"
+                path="/work"
                 element={<Experience data={portfolioData?.experience} />}
+              />
+              <Route
+                path="/experience"
+                element={<Navigate to="/work" replace />}
               />
               <Route
                 path="/talks"

@@ -14,12 +14,12 @@ const ROUTE_METADATA = {
     description: 'Staff ML Engineer at Priceline specializing in central AI/ML platforms, MLOps, and agentic AI systems.',
   },
   '/work': {
-    title: 'Work (Featured) | Mefta Sadat',
-    description: 'Featured architectural projects and ML platform innovations by Mefta Sadat at Priceline and Loblaw Digital.',
+    title: 'Work | Mefta Sadat',
+    description: 'Professional work experience of Mefta Sadat at Priceline, Loblaw Digital, Zone•tv, and IBM CAS.',
   },
   '/experience': {
-    title: 'Experience | Mefta Sadat',
-    description: 'Professional experience of Mefta Sadat at Priceline, Loblaw Digital, Zone•tv, and IBM CAS.',
+    title: 'Work | Mefta Sadat',
+    description: 'Professional work experience of Mefta Sadat at Priceline, Loblaw Digital, Zone•tv, and IBM CAS.',
   },
   '/talks': {
     title: 'Appearances & Talks | Mefta Sadat',

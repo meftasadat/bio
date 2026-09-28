@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './Header.css'
 import { useTheme } from '../context/ThemeContext'
 import { FEATURE_FLAGS } from '../lib/feature-flags'
+
+const SECTION_IDS = ['about', 'talks', 'writing', 'work']
 
 function Header({ onOpenResume }) {
   const location = useLocation()
@@ -10,65 +12,158 @@ function Header({ onOpenResume }) {
   const { theme, toggleTheme } = useTheme()
   const [activeSection, setActiveSection] = useState('about')
 
+  const isManualScrollingRef = useRef(false)
+  const scrollEndTimerRef = useRef(null)
+  const safetyTimerRef = useRef(null)
+
   const navLinks = [
     { id: 'about', path: '/#about', label: 'About' },
     { id: 'talks', path: '/#talks', label: 'Appearances' },
     { id: 'writing', path: '/#writing', label: 'Writing' },
     { id: 'work', path: '/#work', label: 'Work' },
-    { id: 'experience', path: '/#experience', label: 'Experience' },
   ]
 
   if (FEATURE_FLAGS.SHOW_APPS_NAV) {
     navLinks.push({ id: 'apps', path: '/apps', label: 'Apps' })
   }
 
-  // Active section scrollspy
-  useEffect(() => {
+  const getHeaderHeight = () => {
+    const header = document.querySelector('.site-header')
+    return header ? header.offsetHeight : 110
+  }
+
+  // Calculate and update which section is active based on current scroll position
+  const updateActiveSection = useCallback(() => {
+    if (isManualScrollingRef.current) return
     if (location.pathname !== '/') return
 
-    const sectionIds = ['about', 'talks', 'writing', 'work', 'experience']
-    const elements = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean)
+    // 1. If at or near the very top of the page, active section is 'about'
+    if (window.pageYOffset < 50) {
+      setActiveSection('about')
+      return
+    }
 
-    if (elements.length === 0) return
+    // 2. If at or near the very bottom of the page, active section is the last section ('experience')
+    const isAtBottom =
+      window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 50
+    if (isAtBottom) {
+      setActiveSection(SECTION_IDS[SECTION_IDS.length - 1])
+      return
+    }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries.filter((entry) => entry.isIntersecting)
-        if (visibleEntries.length > 0) {
-          visibleEntries.sort(
-            (a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top)
-          )
-          setActiveSection(visibleEntries[0].target.id)
+    // 3. Document-order scrollspy:
+    // Reference line sits comfortably below the sticky header
+    const headerHeight = getHeaderHeight()
+    const referenceY = headerHeight + 50
+
+    let currentActive = 'about'
+    for (const id of SECTION_IDS) {
+      const el = document.getElementById(id)
+      if (el) {
+        const top = el.getBoundingClientRect().top
+        if (top <= referenceY) {
+          currentActive = id
         }
-      },
-      {
-        rootMargin: '-15% 0px -40% 0px',
-        threshold: [0, 0.2]
-      }
-    )
-
-    elements.forEach((el) => observer.observe(el))
-
-    const handleScrollBottom = () => {
-      if (window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 60) {
-        setActiveSection('experience')
       }
     }
-    window.addEventListener('scroll', handleScrollBottom, { passive: true })
 
-    return () => {
-      observer.disconnect()
-      window.removeEventListener('scroll', handleScrollBottom)
-    }
+    setActiveSection(currentActive)
   }, [location.pathname])
 
+  // Active section scrollspy & interaction listeners
+  useEffect(() => {
+    if (location.pathname === '/apps') {
+      setActiveSection('apps')
+      return
+    }
+
+    if (location.pathname !== '/') {
+      setActiveSection('')
+      return
+    }
+
+    // Initialize active section from hash or current scroll position
+    if (window.location.hash) {
+      const targetHash = window.location.hash.replace('#', '')
+      if (SECTION_IDS.includes(targetHash)) {
+        setActiveSection(targetHash)
+      }
+    } else {
+      updateActiveSection()
+    }
+
+    let ticking = false
+    const handleScroll = () => {
+      if (isManualScrollingRef.current) {
+        // While programmatically smooth scrolling, reset scrollEnd debounce
+        clearTimeout(scrollEndTimerRef.current)
+        scrollEndTimerRef.current = setTimeout(() => {
+          isManualScrollingRef.current = false
+          updateActiveSection()
+        }, 150)
+        return
+      }
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveSection()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    // When the browser signals that scrolling has ended
+    const handleScrollEnd = () => {
+      isManualScrollingRef.current = false
+      clearTimeout(scrollEndTimerRef.current)
+      clearTimeout(safetyTimerRef.current)
+      updateActiveSection()
+    }
+
+    // If the user manually intervenes with wheel, touch, or keys, release lock immediately
+    const handleUserInterrupt = () => {
+      if (isManualScrollingRef.current) {
+        isManualScrollingRef.current = false
+        clearTimeout(scrollEndTimerRef.current)
+        clearTimeout(safetyTimerRef.current)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('scrollend', handleScrollEnd, { passive: true })
+    window.addEventListener('wheel', handleUserInterrupt, { passive: true })
+    window.addEventListener('touchstart', handleUserInterrupt, { passive: true })
+    window.addEventListener('keydown', handleUserInterrupt, { passive: true })
+    window.addEventListener('resize', updateActiveSection, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scrollend', handleScrollEnd)
+      window.removeEventListener('wheel', handleUserInterrupt)
+      window.removeEventListener('touchstart', handleUserInterrupt)
+      window.removeEventListener('keydown', handleUserInterrupt)
+      window.removeEventListener('resize', updateActiveSection)
+      clearTimeout(scrollEndTimerRef.current)
+      clearTimeout(safetyTimerRef.current)
+    }
+  }, [location.pathname, updateActiveSection])
+
   const scrollToTarget = (targetId) => {
-    const el = document.getElementById(targetId)
+    const resolvedId =
+      targetId === 'experience' && !document.getElementById('experience') ? 'work' : targetId
+    const el = document.getElementById(resolvedId)
     if (!el) return
 
-    setActiveSection(targetId)
+    const navActiveId = resolvedId === 'experience' ? 'work' : resolvedId
+    setActiveSection(navActiveId)
+    isManualScrollingRef.current = true
+
+    clearTimeout(scrollEndTimerRef.current)
+    clearTimeout(safetyTimerRef.current)
+    safetyTimerRef.current = setTimeout(() => {
+      isManualScrollingRef.current = false
+    }, 1000)
 
     // Trigger visual spotlight pulse on the targeted section
     el.classList.remove('section-spotlight')
@@ -78,49 +173,38 @@ function Header({ onOpenResume }) {
       el.classList.remove('section-spotlight')
     }, 1600)
 
-    const header = document.querySelector('.site-header')
-    const headerHeight = header ? header.offsetHeight : 120
-    const mainEl = document.querySelector('main')
-
+    const headerHeight = getHeaderHeight()
     const elementTop = el.getBoundingClientRect().top + window.pageYOffset
     const offsetPosition = Math.max(0, elementTop - headerHeight - 20)
-
-    // Innovative dynamic runway: if the page is too short to scroll this section to the top,
-    // dynamically extend paddingBottom so it smoothly glides right to the top under the header
-    const currentMaxScroll = document.documentElement.scrollHeight - window.innerHeight
-    if (offsetPosition > currentMaxScroll) {
-      const shortfall = offsetPosition - currentMaxScroll
-      if (mainEl) {
-        mainEl.style.paddingBottom = `${shortfall + 100}px`
-      }
-    }
 
     window.scrollTo({
       top: offsetPosition,
       behavior: 'smooth'
     })
+  }
 
-    // Once user scrolls back up past the section, gracefully clean up the temporary runway
-    const handleScrollUpRelease = () => {
-      if (window.pageYOffset < offsetPosition - 150) {
-        if (mainEl) {
-          mainEl.style.paddingBottom = ''
-        }
-        window.removeEventListener('scroll', handleScrollUpRelease)
-      }
+  const scrollWithRetry = (targetId, maxRetries = 6) => {
+    const el = document.getElementById(targetId)
+    if (el) {
+      scrollToTarget(targetId)
+    } else if (maxRetries > 0) {
+      setTimeout(() => scrollWithRetry(targetId, maxRetries - 1), 80)
     }
-    window.addEventListener('scroll', handleScrollUpRelease, { passive: true })
   }
 
   const handleNavClick = (e, path) => {
     e.preventDefault()
-    const mainEl = document.querySelector('main')
 
     if (path === '/' || path === '/#about') {
-      if (mainEl) {
-        mainEl.style.paddingBottom = ''
-      }
       setActiveSection('about')
+      isManualScrollingRef.current = true
+
+      clearTimeout(scrollEndTimerRef.current)
+      clearTimeout(safetyTimerRef.current)
+      safetyTimerRef.current = setTimeout(() => {
+        isManualScrollingRef.current = false
+      }, 1000)
+
       if (location.pathname === '/') {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
@@ -136,9 +220,7 @@ function Header({ onOpenResume }) {
         scrollToTarget(targetId)
       } else {
         navigate('/')
-        setTimeout(() => {
-          scrollToTarget(targetId)
-        }, 150)
+        scrollWithRetry(targetId)
       }
       return
     }
@@ -153,7 +235,7 @@ function Header({ onOpenResume }) {
           <Link
             to="/"
             className="site-brand"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={(e) => handleNavClick(e, '/#about')}
           >
             <img
               src="/static/bio-img.JPG"
