@@ -221,3 +221,6 @@ __marimo__/
 
 # Agent skills
 .agents/
+
+# Compiled frontend bundle in backend static
+backend/app/static/web/

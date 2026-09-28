@@ -52,13 +52,15 @@ ALLOWED_TAGS: Iterable[str] = bleach.sanitizer.ALLOWED_TAGS.union(
         "strong",
         "em",
         "img",
+        "div",
     }
 )
 
 ALLOWED_ATTRIBUTES = {
     **bleach.sanitizer.ALLOWED_ATTRIBUTES,
-    "a": ["href", "title", "target", "rel"],
+    "a": ["href", "title", "target", "rel", "class"],
     "img": ["src", "alt", "title", "class"],
+    "div": ["class"],
     "code": ["class"],
     "pre": ["class"],
     "span": ["class"],

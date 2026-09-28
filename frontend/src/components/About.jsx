@@ -1,110 +1,45 @@
-import { useState } from 'react'
 import './About.css'
-import { IS_DEV } from '../lib/api.js'
-import ResumeModal from './ResumeModal'
 
-function About({ data }) {
-  const [showResumeModal, setShowResumeModal] = useState(false)
+const FOCUS_AREAS = [
+  {
+    title: 'Agentic AI & Orchestration',
+    description: 'Multi-agent coordination using LangGraph, LiteLLM, and tool calling for autonomous, multi-step enterprise workflows.'
+  },
+  {
+    title: 'Enterprise MLOps & AI Platform',
+    description: 'Production model serving and inferencing at scale on Kubernetes, Vertex AI, and Airflow for distributed systems.'
+  },
+  {
+    title: 'Observability, Evals & Guardrails',
+    description: 'Evals-as-a-Service for automated model benchmarking, telemetry with LangFuse, and production safety guardrails.'
+  },
+  {
+    title: 'Recommender Systems & Vector Search',
+    description: 'Large-scale personalized recommendation engines and semantic vector search with Qdrant, powering millions of user journeys.'
+  }
+]
 
-  if (!data) return null
-
-  const renderAboutText = (text) => {
-    // Parse markdown links [text](url) within a string
-    const parseLinks = (str) => {
-      const parts = str.split(/(\[[^\]]+\]\([^)]+\))/g)
-      return parts.map((part, i) => {
-        const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
-        if (match) {
-          return <a key={i} href={match[2]} target="_blank" rel="noopener noreferrer">{match[1]}</a>
-        }
-        return part
-      })
-    }
-
-    // Split into paragraphs and render with link parsing
-    return text.split('\n\n').map((paragraph, index) => (
-      <p key={index} className="about-paragraph">
-        {parseLinks(paragraph.trim())}
-      </p>
-    ));
-  };
-
+function About() {
   return (
-    <>
-    <section className="about" id="about">
+    <section className="section focus-section" id="focus">
       <div className="container">
+        <div className="section-header">
+          <h2 className="section-title">Technical Focus</h2>
+          <p className="section-description">
+            Core engineering disciplines across research, platform architecture, and high-scale production systems.
+          </p>
+        </div>
 
-        <div className="about-content">
-          <div className="about-main">
-            <div className="about-intro">
-              <h3 className="intro-title">Hello, I'm {data.name.split(' ')[0]}</h3>
-              <p className="intro-subtitle">{data.title}</p>
+        <div className="focus-grid">
+          {FOCUS_AREAS.map((area, idx) => (
+            <div key={idx} className="focus-item">
+              <h3 className="focus-title">{area.title}</h3>
+              <p className="focus-desc">{area.description}</p>
             </div>
-
-            <div className="about-text">
-              {renderAboutText(data.about)}
-            </div>
-
-
-          </div>
-
-          <div className="about-sidebar">
-            <div className="profile-card">
-              <div className="profile-avatar">
-                <img
-                  src="/static/bio-img.JPG"
-                  alt={data.name}
-                  className="profile-image"
-                />
-                <div className="avatar-glow"></div>
-              </div>
-
-              <div className="profile-info">
-                <h3 className="profile-name">{data.name}</h3>
-                <p className="profile-title">{data.title}</p>
-                <div className="profile-summary">
-                  <p>{data.summary}</p>
-                </div>
-              </div>
-
-              <div className="profile-contact">
-                <a href="https://www.linkedin.com/in/meftasadat/" target="_blank" rel="noopener noreferrer" className="contact-link" title="LinkedIn">
-                  <i className="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/meftasadat" target="_blank" rel="noopener noreferrer" className="contact-link" title="GitHub">
-                  <i className="fab fa-github"></i>
-                </a>
-                <a href="mailto:meftasadat@gmail.com" className="contact-link" title="Email">
-                  <i className="fas fa-envelope"></i>
-                </a>
-              </div>
-
-              <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-                {IS_DEV ? (
-                  <button className="resume-button" onClick={() => setShowResumeModal(true)}>
-                    <i className="fas fa-file-pdf" style={{ marginRight: '0.5rem' }}></i>
-                    Download Resume
-                  </button>
-                ) : (
-                  <a className="resume-button" href="/static/resume.pdf" download="Mefta_Sadat_Resume.pdf">
-                    <i className="fas fa-file-pdf" style={{ marginRight: '0.5rem' }}></i>
-                    Download Resume
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
-    {IS_DEV && (
-      <ResumeModal
-        isOpen={showResumeModal}
-        onClose={() => setShowResumeModal(false)}
-        data={data}
-      />
-    )}
-    </>
   )
 }
 

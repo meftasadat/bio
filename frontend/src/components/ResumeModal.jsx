@@ -82,7 +82,14 @@ function ResumeModal({ isOpen, onClose, data }) {
         }),
       })
 
-      if (!response.ok) throw new Error('PDF generation failed')
+      if (!response.ok) {
+        // Fallback to static resume PDF
+        const fallbackA = document.createElement('a')
+        fallbackA.href = '/static/resume.pdf'
+        fallbackA.download = 'Mefta_Sadat_Resume.pdf'
+        fallbackA.click()
+        return
+      }
 
       const blob = await response.blob()
       const url = URL.createObjectURL(blob)
@@ -94,8 +101,11 @@ function ResumeModal({ isOpen, onClose, data }) {
       document.body.removeChild(a)
       URL.revokeObjectURL(url)
     } catch (err) {
-      console.error('Resume generation failed:', err)
-      alert('Failed to generate resume. Please try again.')
+      console.warn('LaTeX generation fallback:', err)
+      const fallbackA = document.createElement('a')
+      fallbackA.href = '/static/resume.pdf'
+      fallbackA.download = 'Mefta_Sadat_Resume.pdf'
+      fallbackA.click()
     } finally {
       setGenerating(false)
     }
@@ -186,11 +196,19 @@ function ResumeModal({ isOpen, onClose, data }) {
               disabled={selectedCount === 0 || generating}
             >
               {generating ? (
-                <><i className="fas fa-spinner fa-spin"></i> Generating...</>
+                <><i className="fas fa-spinner fa-spin"></i> Generating Custom PDF...</>
               ) : (
-                <><i className="fas fa-download"></i> Generate PDF</>
+                <><i className="fas fa-wand-magic-sparkles"></i> Generate Selected PDF</>
               )}
             </button>
+
+            <a
+              href="/static/resume.pdf"
+              download="Mefta_Sadat_Resume.pdf"
+              className="resume-download-direct-btn"
+            >
+              <i className="fas fa-download"></i> Download Full Resume PDF
+            </a>
           </aside>
 
           {/* Right: live preview */}

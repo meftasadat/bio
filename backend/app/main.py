@@ -133,13 +133,13 @@ def _resolve_frontend_asset(path_fragment: str) -> Path | None:
     return None
 
 
-@app.get("/", include_in_schema=False)
+@app.api_route("/", methods=["GET", "HEAD"], include_in_schema=False)
 async def serve_frontend_root():
     """Serve the compiled React application."""
     return FileResponse(_frontend_index())
 
 
-@app.get("/{full_path:path}", include_in_schema=False)
+@app.api_route("/{full_path:path}", methods=["GET", "HEAD"], include_in_schema=False)
 async def serve_frontend_app(full_path: str):
     """Serve frontend assets or fall back to index.html for client-side routes."""
     if full_path.startswith("api"):

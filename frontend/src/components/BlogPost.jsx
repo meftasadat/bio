@@ -17,12 +17,15 @@ function BlogPost() {
   const fetchBlogPost = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/blog/slug/${slug}`)
-      setPost(response.data)
+      const data = response.data
+      setPost(data)
       setLoading(false)
       // Redirect to Medium after a short delay
-      setTimeout(() => {
-        window.open(post.medium_url, '_blank', 'noopener,noreferrer')
-      }, 2000)
+      if (data?.medium_url) {
+        setTimeout(() => {
+          window.open(data.medium_url, '_blank', 'noopener,noreferrer')
+        }, 1500)
+      }
     } catch (error) {
       console.error('Error fetching blog post:', error)
       setError('Blog post not found')
@@ -63,8 +66,7 @@ function BlogPost() {
 
   return (
     <article className="blog-post">
-      <div className="container">
-        <div className="blog-post-header">
+      <div className="blog-post-header">
           <Link to="/blog" className="back-to-blog">← Back to Blog</Link>
           <div className="blog-post-meta">
             <span className="blog-post-date">{formatDate(post.published_at)}</span>
@@ -82,20 +84,11 @@ function BlogPost() {
 
         <p className="blog-post-excerpt">{post.excerpt}</p>
 
-        {post.tags && post.tags.length > 0 && (
-          <div className="blog-post-tags">
-            {post.tags.map((tag) => (
-              <span key={tag} className="blog-post-tag">{tag}</span>
-            ))}
-          </div>
-        )}
-
         <div className="blog-post-redirect">
           <p>Redirecting you to the full article on Medium...</p>
           <p>If you are not redirected automatically, <a href={post.medium_url} target="_blank" rel="noopener noreferrer">click here</a>.</p>
         </div>
-      </div>
-    </article>
+      </article>
   )
 }
 

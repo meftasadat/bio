@@ -1,49 +1,77 @@
+import { useState } from 'react'
 import './Publications.css'
 
 function Publications({ data }) {
+  const [copiedId, setCopiedId] = useState(null)
+
   if (!data || data.length === 0) return null
 
-  const formatDate = (date) => {
-    return new Date(date).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short'
+  const getBibtex = (pub) => {
+    const key = pub.id || 'sadat'
+    const authors = (pub.authors || []).join(' and ')
+    const year = pub.date ? pub.date.split('-')[0] : '2017'
+    return `@article{${key},
+  title={${pub.title}},
+  author={${authors}},
+  journal={${pub.venue}},
+  year={${year}}${pub.url ? `,\n  url={${pub.url}}` : ''}
+}`
+  }
+
+  const copyBibtex = (pub) => {
+    const bib = getBibtex(pub)
+    navigator.clipboard.writeText(bib).then(() => {
+      setCopiedId(pub.id)
+      setTimeout(() => setCopiedId(null), 2000)
     })
   }
 
   return (
-    <section className="publications" id="publications">
-      <div className="container">
-        <div className="publications-list">
-          {data.map((pub) => (
-            <article key={pub.id} className="publication-card">
-              <div className="publication-header">
-                <h3 className="publication-title">{pub.title}</h3>
-                <div className="publication-meta">
-                  <span>{pub.venue}</span>
-                  <span>•</span>
-                  <span>{formatDate(pub.date)}</span>
-                </div>
+    <section className="section" id="publications">
+      <h2 className="section-heading">
+        <a href="#publications">Research & Publications</a>
+      </h2>
+
+      <ul className="entry-list">
+        {data.map((pub) => {
+          const isCopied = copiedId === pub.id
+          const year = pub.date ? pub.date.split('-')[0] : ''
+
+          return (
+            <li key={pub.id} className="entry-item">
+              <div className="entry-meta">
+                <time>{year}</time>
               </div>
-              {pub.authors && pub.authors.length > 0 && (
-                <p className="publication-authors">{pub.authors.join(', ')}</p>
-              )}
-              {pub.summary_html && (
-                <div
-                  className="publication-summary"
-                  dangerouslySetInnerHTML={{ __html: pub.summary_html }}
-                />
-              )}
-              <div className="publication-links">
-                {pub.url && (
-                  <a href={pub.url} target="_blank" rel="noopener noreferrer">
-                    Read publication →
+              <div className="entry-content">
+                {pub.url ? (
+                  <a
+                    href={pub.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {pub.title}
                   </a>
+                ) : (
+                  <span>{pub.title}</span>
                 )}
+                <span className="entry-venue"> — {pub.venue}</span>
+                {' '}
+                <span className="cite-wrap">
+                  [{' '}
+                  <button
+                    className="cite-btn"
+                    onClick={() => copyBibtex(pub)}
+                    title="Copy BibTeX citation"
+                  >
+                    {isCopied ? 'copied' : 'cite'}
+                  </button>{' '}
+                  ]
+                </span>
               </div>
-            </article>
-          ))}
-        </div>
-      </div>
+            </li>
+          )
+        })}
+      </ul>
     </section>
   )
 }

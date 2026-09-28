@@ -1,53 +1,39 @@
-import { useState, useEffect } from 'react'
 import './Hero.css'
-import ParticleBackground from './ParticleBackground'
 
-function Hero({ data }) {
-  const [displayedText, setDisplayedText] = useState('')
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    if (!data?.summary) return
-
-    if (currentIndex < data.summary.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText(prev => prev + data.summary[currentIndex])
-        setCurrentIndex(prev => prev + 1)
-      }, 50) // 50ms delay between each character
-
-      return () => clearTimeout(timeout)
-    }
-  }, [currentIndex, data?.summary])
-
-  // Reset animation when data changes
-  useEffect(() => {
-    setDisplayedText('')
-    setCurrentIndex(0)
-  }, [data?.summary])
-
+function Hero({ data, onOpenResume }) {
   if (!data) return null
 
   return (
-    <section className="hero">
-      <ParticleBackground />
-      <div className="hero-content">
-        <h1 className="hero-title">
-          Hi, I'm <span className="highlight">{data.name}</span>
-        </h1>
-        <h2 className="hero-subtitle">{data.title}</h2>
-        <p className="hero-description">
-          {displayedText}
-          <span className="typing-cursor">|</span>
-        </p>
-        <div className="hero-actions">
-          <a href="#talks" className="btn btn-primary">Watch My Talks</a>
-        </div>
-      </div>
+    <section className="about-section" id="about">
+      <p>
+        I build systems that bring artificial intelligence into the real world. Over the last decade, my focus has been on the messy, fascinating intersection of frontier AI and production engineering—turning research, foundation models, and autonomous agents into distributed software that reliably serves millions.
+      </p>
 
+      <p>
+        Currently at <a href="https://www.priceline.com" target="_blank" rel="noopener noreferrer">Priceline.com</a> ✈️, I'm building the centralized AI/ML platform to productionize Generative AI across the enterprise.
+      </p>
 
+      <p>
+        Previously at <a href="https://www.loblawdigital.co/" target="_blank" rel="noopener noreferrer">Loblaw Digital</a> 🛒, I architected the{' '}
+        <a
+          href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          PC Express ChatGPT app
+        </a>{' '}
+        (Canada’s first grocery app on the ChatGPT store), created <strong>Alfred</strong> (an enterprise multi-agent orchestration engine), and built the <strong>Helios Recommendation Engine</strong>.
+      </p>
+
+      <p className="about-social">
+        Find me on{' '}
+        <a href="mailto:meftasadat@gmail.com">email</a>,{' '}
+        <a href="https://www.linkedin.com/in/meftasadat/" target="_blank" rel="noopener noreferrer">LinkedIn</a>,{' '}
+        <a href="https://github.com/meftasadat" target="_blank" rel="noopener noreferrer">GitHub</a>, and{' '}
+        <a href="https://scholar.google.ca/citations?user=dIC_OowAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>, or view my{' '}
+        <button className="text-btn" onClick={onOpenResume}>resume</button>.
+      </p>
     </section>
-
-
   )
 }
 

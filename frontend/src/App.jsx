@@ -3,15 +3,19 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import './App.css'
 
-// Components
+// Core Components
 import Header from './components/Header'
 import Hero from './components/Hero'
-import About from './components/About'
+import Innovations from './components/Innovations'
 import Experience from './components/Experience'
-import Blog from './components/Blog'
-import BlogPost from './components/BlogPost'
 import Talks from './components/Talks'
 import Publications from './components/Publications'
+import Blog from './components/Blog'
+import BlogPost from './components/BlogPost'
+import Footer from './components/Footer'
+
+// Modals
+import ResumeModal from './components/ResumeModal'
 
 // Apps Components
 import Apps from './components/apps/Apps'
@@ -21,15 +25,16 @@ import TermsOfService from './components/apps/TermsOfService'
 import AppContact from './components/apps/AppContact'
 
 import { API_BASE_URL } from './lib/api.js'
+import { FALLBACK_PORTFOLIO_DATA, FALLBACK_BLOG_POSTS } from './lib/fallback-data.js'
 
 function App() {
   const location = useLocation()
-  const [portfolioData, setPortfolioData] = useState(null)
-  const [blogPosts, setBlogPosts] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [portfolioData, setPortfolioData] = useState(FALLBACK_PORTFOLIO_DATA)
+  const [blogPosts, setBlogPosts] = useState(FALLBACK_BLOG_POSTS)
+  const [isResumeOpen, setIsResumeOpen] = useState(false)
 
-  // Check if we're on an individual app page (not the /apps gallery)
-  const isAppPage = location.pathname.startsWith('/apps/') && location.pathname !== '/apps'
+  // Check if we're on an individual app sub-page
+  const isAppLegalPage = location.pathname.startsWith('/apps/') && location.pathname !== '/apps'
 
   useEffect(() => {
     fetchPortfolioData()
@@ -39,62 +44,103 @@ function App() {
   const fetchPortfolioData = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/content/`)
-      setPortfolioData(response.data)
+      if (response.data && response.data.name) {
+        setPortfolioData(response.data)
+      }
     } catch (error) {
-      console.error('Error fetching portfolio data:', error)
+      console.warn('Using baseline portfolio data:', error.message)
     }
   }
 
   const fetchBlogPosts = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/blog/`)
-      setBlogPosts(response.data.posts)
-      setLoading(false)
+      if (response.data?.posts?.length > 0) {
+        setBlogPosts(response.data.posts)
+      }
     } catch (error) {
-      console.error('Error fetching blog posts:', error)
-      setLoading(false)
+      console.warn('Using baseline blog posts:', error.message)
     }
-  }
-
-  if (loading) {
-    return (
-      <div className="loading">
-        <div className="spinner"></div>
-        <p>Loading portfolio...</p>
-      </div>
-    )
   }
 
   return (
     <div className="App">
-      {!isAppPage && <Header />}
-      <main>
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Hero data={portfolioData} />
-              <About data={portfolioData} />
-              <Experience data={portfolioData?.experience} />
-              <Blog posts={blogPosts.slice(0, 3)} />
-              <Talks data={portfolioData?.talks} />
-              <Publications data={portfolioData?.publications} />
-            </>
-          } />
-          <Route path="/about" element={<About data={portfolioData} />} />
-          <Route path="/experience" element={<Experience data={portfolioData?.experience} />} />
-          <Route path="/talks" element={<Talks data={portfolioData?.talks} />} />
-          <Route path="/publications" element={<Publications data={portfolioData?.publications} />} />
-          <Route path="/blog" element={<Blog posts={blogPosts} />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
+      {isAppLegalPage ? (
+        <main>
+          <Routes>
+            <Route path="/apps/:appSlug/privacy" element={<PrivacyPolicy />} />
+            <Route path="/apps/:appSlug/terms" element={<TermsOfService />} />
+            <Route path="/apps/:appSlug/contact" element={<AppContact />} />
+          </Routes>
+        </main>
+      ) : (
+        <div className="site-wrapper">
+          <Header onOpenResume={() => setIsResumeOpen(true)} />
 
-          {/* Apps Routes */}
-          <Route path="/apps" element={<Apps />} />
-          <Route path="/apps/:appSlug" element={<AppLanding />} />
-          <Route path="/apps/:appSlug/privacy" element={<PrivacyPolicy />} />
-          <Route path="/apps/:appSlug/terms" element={<TermsOfService />} />
-          <Route path="/apps/:appSlug/contact" element={<AppContact />} />
-        </Routes>
-      </main>
+          <main>
+            <Routes>
+              {/* Main Editorial Portfolio */}
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Hero
+                      data={portfolioData}
+                      onOpenResume={() => setIsResumeOpen(true)}
+                    />
+                    <Talks data={portfolioData?.talks} />
+                    <Blog posts={blogPosts} publications={portfolioData?.publications} />
+                    <Innovations />
+                    <Experience data={portfolioData?.experience} />
+                  </>
+                }
+              />
+
+              {/* Sub-routes for direct navigation */}
+              <Route path="/work" element={<Innovations />} />
+              <Route
+                path="/about"
+                element={
+                  <Hero
+                    data={portfolioData}
+                    onOpenResume={() => setIsResumeOpen(true)}
+                  />
+                }
+              />
+              <Route
+                path="/experience"
+                element={<Experience data={portfolioData?.experience} />}
+              />
+              <Route
+                path="/talks"
+                element={<Talks data={portfolioData?.talks} />}
+              />
+              <Route
+                path="/publications"
+                element={<Blog posts={blogPosts} publications={portfolioData?.publications} />}
+              />
+              <Route
+                path="/blog"
+                element={<Blog posts={blogPosts} publications={portfolioData?.publications} />}
+              />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+
+              {/* Apps Showcase Routes */}
+              <Route path="/apps" element={<Apps />} />
+              <Route path="/apps/:appSlug" element={<AppLanding />} />
+            </Routes>
+          </main>
+
+          <Footer />
+        </div>
+      )}
+
+      {/* Resume Builder Modal */}
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+        data={portfolioData}
+      />
     </div>
   )
 }

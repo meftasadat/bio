@@ -1,327 +1,105 @@
-.experience {
-  padding: 80px 0;
-  background-color: var(--bg-light);
-}
-
-/* Timeline Container */
-.experience-timeline {
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding-left: 60px;
-}
-
-/* Vertical Timeline Line */
-.timeline-line {
-  position: absolute;
-  left: 30px;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg,
-      transparent 0%,
-      hsl(220, 70%, 60%) 10%,
-      hsl(220, 70%, 60%) 90%,
-      transparent 100%);
-}
-
-/* Timeline Item */
-.experience-item {
-  position: relative;
-  margin-bottom: 3rem;
-}
-
-/* Timeline Node */
-.timeline-node {
-  position: absolute;
-  left: -60px;
-  top: 2rem;
-  z-index: 2;
-}
-
-.timeline-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: white;
+/* Experience Section Styles */
+.experience-list {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: hsl(220, 70%, 60%);
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.exp-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-heading {
+  font-size: 1rem;
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
-    0 0 0 4px white,
-    0 0 0 6px hsl(220, 70%, 60%, 0.3);
-  transition: all 0.3s ease;
-  overflow: hidden;
+  color: hsl(var(--theme-headings));
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
 }
 
-.company-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 8px;
+.exp-sep {
+  color: hsl(var(--theme-text) / 0.5);
 }
 
-.experience-item:hover .timeline-icon {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2),
-    0 0 0 4px white,
-    0 0 0 8px hsl(220, 70%, 60%, 0.4);
+.exp-company {
+  color: hsl(var(--theme-headings));
 }
 
-/* Experience Card */
-.experience-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
+.exp-dates {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: hsl(var(--theme-text) / 0.6);
 }
 
-.experience-card:hover {
-  transform: translateX(4px);
-  box-shadow: var(--shadow-lg);
-  border-color: hsl(220, 70%, 60%, 0.3);
+.exp-body {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: hsl(var(--theme-text));
 }
 
-/* Experience Header */
-.experience-header {
-  background: white;
-  color: var(--text-color);
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 1rem;
-  border-bottom: 1px solid var(--border-color);
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+.exp-body ul {
+  padding-left: 1.25rem;
+  margin: 0;
+  list-style-type: disc;
 }
 
-.experience-header:hover {
-  background-color: hsl(220, 70%, 98%);
-}
-
-.experience-title-section {
-  flex: 1;
-}
-
-.experience-position {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem 0;
-  line-height: 1.2;
-  background: linear-gradient(135deg, hsl(220, 70%, 40%), hsl(260, 70%, 50%));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.experience-company {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-light);
-}
-
-/* Experience Meta */
-.experience-meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.experience-date {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-light);
-  background: var(--bg-light);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  white-space: nowrap;
-}
-
-.experience-location {
-  color: var(--text-light);
-}
-
-/* Expand Toggle Button */
-.expand-toggle {
-  background: linear-gradient(135deg, hsl(220, 70%, 60%), hsl(260, 70%, 60%));
-  color: white;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
-}
-
-.expand-toggle:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.expand-toggle i {
-  transition: transform 0.3s ease;
-}
-
-/* Highlights Section */
-.experience-highlights {
-  padding: 1.5rem 2rem;
-  background: linear-gradient(135deg, hsl(220, 70%, 98%), hsl(260, 70%, 98%));
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.highlight-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: white;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid hsl(220, 70%, 90%);
-  transition: all 0.3s ease;
-}
-
-.highlight-badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  border-color: hsl(220, 70%, 60%);
-}
-
-.highlight-badge i {
-  color: hsl(45, 100%, 50%);
-  font-size: 0.9rem;
-}
-
-.highlight-badge span {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-color);
-}
-
-/* Experience Content */
-.experience-content {
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-}
-
-.experience-content.collapsed {
-  max-height: 0;
-  padding: 0 2rem;
-}
-
-.experience-content.expanded {
-  max-height: 2000px;
-  padding: 2rem;
-}
-
-.experience-description {
-  color: var(--text-light);
-  line-height: 1.6;
-}
-
-.experience-description.rich-text ul,
-.experience-description.rich-text ol {
-  margin: 1rem 0 1rem 1.25rem;
-  padding-left: 1rem;
-}
-
-.experience-description.rich-text li {
+.exp-body li {
   margin-bottom: 0.5rem;
 }
 
-.experience-description.rich-text h4 {
-  margin-top: 1.25rem;
-  color: var(--text-color);
+.chatgpt-img-container {
+  display: block;
+  width: 100%;
+  margin: 0.85rem 0 0.5rem 0;
 }
 
-.experience-description.rich-text a {
-  color: hsl(220, 70%, 50%);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
-}
-
-.experience-description.rich-text a:hover {
-  color: hsl(260, 70%, 50%);
-  text-decoration-color: hsl(260, 70%, 50%);
+.exp-body a.chatgpt-app-link,
+.exp-body a:has(.chatgpt-app-image) {
+  background: none !important;
+  background-image: none !important;
+  text-decoration: none !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0.85rem 0 0.5rem 0 !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
 .chatgpt-app-image {
+  width: 100%;
   max-width: 100%;
-  width: 600px;
-  border-radius: 8px;
-  margin: 10px auto 15px auto;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid hsl(var(--theme-border));
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   display: block;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .experience-timeline {
-    padding-left: 50px;
-  }
+.chatgpt-app-image:hover,
+.exp-body a.chatgpt-app-link:hover .chatgpt-app-image {
+  border-color: hsl(var(--theme-accent));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
 
-  .timeline-line {
-    left: 20px;
-  }
+.standalone-nav-header,
+.standalone-nav-footer {
+  margin: 1.5rem 0;
+}
 
-  .timeline-node {
-    left: -50px;
-  }
+.back-home-link {
+  color: hsl(var(--theme-accent)) !important;
+  font-size: 0.875rem;
+  background: none !important;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
 
-  .timeline-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-
-  .experience-header {
-    flex-direction: column;
-    text-align: left;
-    padding: 1.5rem;
-  }
-
-  .experience-position {
-    font-size: 1.25rem;
-  }
-
-  .experience-meta {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .experience-date {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.8rem;
-    white-space: normal;
-  }
-
-  .experience-highlights {
-    padding: 1rem 1.5rem;
-  }
-
-  .highlight-badge {
-    font-size: 0.85rem;
-    padding: 0.6rem 1rem;
-  }
-
-  .experience-content.expanded {
-    padding: 1.5rem;
-  }
+.back-home-link:hover {
+  text-decoration: underline !important;
 }
