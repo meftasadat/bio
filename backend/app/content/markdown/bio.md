@@ -1,10 +1,10 @@
 ---
 name: Mefta Sadat
 title: Staff ML Developer
-summary: I specialize in MLOps and Agentic AI. 13+ years of experience.
+summary: Building centralized AI platforms, agentic workflows, and scalable ML infrastructure.
 ---
 
-I build systems that bring artificial intelligence into the real world. Over the last 13+ years, my focus has been on the messy, fascinating intersection of frontier AI and production engineering—turning research, foundation models, and autonomous agents into distributed software that reliably serves millions.
+I build systems that bring artificial intelligence into the real world. Across multiple shifts in the AI/ML landscape, my work has focused on the messy, fascinating intersection of frontier AI and production engineering—turning research, foundation models, and autonomous agents into distributed software that reliably serves millions.
 
 Currently at [Priceline.com](https://www.priceline.com) ✈️, I'm building the centralized AI/ML platform to productionize ML and Generative AI across the enterprise.
 

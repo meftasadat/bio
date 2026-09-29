@@ -17,8 +17,8 @@ def test_bio_content():
     data = response.json()
     assert data["name"] == "Mefta Sadat"
     assert data["title"] == "Staff ML Developer"
-    assert "13+ years" in data["summary"]
-    assert "13+ years" in data["about"]
+    assert "Building centralized AI platforms" in data["summary"]
+    assert "Across multiple shifts in the AI/ML landscape" in data["about"]
 
 
 def test_experience_content():
