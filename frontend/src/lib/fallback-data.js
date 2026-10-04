@@ -15,7 +15,7 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
       company: 'Priceline.com',
       position: 'Staff ML Developer',
       location: 'Toronto, Canada',
-      start_date: '2026-03-01',
+      start_date: '2026-04-01',
       end_date: null,
       description: `<ul>
         <li>Leading the architecture of Priceline's centralized AI/ML platform, the shared foundation teams use to take ML and generative AI from prototype to production safely and consistently.</li>
@@ -36,7 +36,7 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
       position: 'Staff ML Software Engineer',
       location: 'Toronto, Canada',
       start_date: '2018-08-01',
-      end_date: '2026-03-01',
+      end_date: '2026-03-31',
       description: `<ul>
         <li>Led and built the first ever Canadian ChatGPT grocery app (PC Express) on the ChatGPT store, enabling customers to plan meals and add ingredients seamlessly to their cart. <a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer">View on ChatGPT</a> • <a href="https://www.loblaw.ca/en/loblaw-advances-ai-in-canadian-retail-with-first-of-its-kind-shopping-app-in-chatgpt/" target="_blank" rel="noopener noreferrer">Read the Press Release</a><br/><a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer" class="chatgpt-app-link"><img src="/static/pc-express-chatgpt.webp" alt="PC Express ChatGPT App" class="chatgpt-app-image" /></a></li>
         <li>Led the development of Alfred, an internal agent orchestration engine powering many conversational AI applications across the organization. Architected the solution using LangGraph, LangFuse, LiteLLM, Gradio, and MCP servers to enable scalable agentic workflows.</li>
@@ -57,7 +57,7 @@ Outside tech, I like to explore the latest in AI and spend time in nature. I'm a
     {
       id: 'zonetv',
       company: 'ZoneTV',
-      position: 'ML Software Engineer',
+      position: 'ML Engineer',
       location: 'Toronto, Canada',
       start_date: '2017-06-01',
       end_date: '2018-08-31',

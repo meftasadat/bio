@@ -31,5 +31,4 @@ talks:
     location: "Virtual"
     link: "https://www.youtube.com/watch?v=Sx7-hok2dtk"
     video_url: "https://www.youtube.com/watch?v=Sx7-hok2dtk"
-    video_url: "https://www.youtube.com/watch?v=Sx7-hok2dtk"
 ---

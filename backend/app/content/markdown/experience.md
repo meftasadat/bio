@@ -4,7 +4,7 @@ experiences:
     company: Priceline.com
     position: Staff ML Developer
     location: Toronto, Canada
-    start_date: 2026-03-01
+    start_date: 2026-04-01
     description: |
       - Leading the architecture of Priceline's centralized AI/ML platform, the shared foundation teams use to take ML and generative AI from prototype to production safely and consistently.
       - Building developer tooling and platform standards that cut the time to launch a new ML or AI project from weeks to days, with CI/CD, observability, and evaluation built in from day one.
@@ -23,7 +23,7 @@ experiences:
     position: Staff ML Software Engineer
     location: Toronto, Canada
     start_date: 2018-08-01
-    end_date: 2026-03-01
+    end_date: 2026-03-31
     description: |
       - Led and built the first ever Canadian ChatGPT grocery app (PC Express) on the ChatGPT store, enabling customers to plan meals and add ingredients seamlessly to their cart. [View on ChatGPT](https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc) • [Read the Press Release](https://www.loblaw.ca/en/loblaw-advances-ai-in-canadian-retail-with-first-of-its-kind-shopping-app-in-chatgpt/)<br/><a href="https://chatgpt.com/apps/pc-express/asdk_app_6944b4329b048191a7bb3376cb1725fc" target="_blank" rel="noopener noreferrer" class="chatgpt-app-link"><img src="/static/pc-express-chatgpt.webp" alt="PC Express ChatGPT App" class="chatgpt-app-image" /></a>
       - Led the development of Alfred, an internal agent orchestration engine powering many conversational AI applications across the organization. Architected the solution using LangGraph, LangFuse, LiteLLM, Gradio, and MCP servers to enable scalable agentic workflows.
@@ -43,7 +43,7 @@ experiences:
 
   - id: zonetv
     company: ZoneTV
-    position: ML Software Engineer
+    position: ML Engineer
     location: Toronto, Canada
     start_date: 2017-06-01
     end_date: 2018-08-31

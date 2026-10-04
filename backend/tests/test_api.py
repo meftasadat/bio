@@ -28,12 +28,17 @@ def test_experience_content():
     experiences = data["experience"]
     priceline = next(e for e in experiences if e["id"] == "priceline")
     assert priceline["position"] == "Staff ML Developer"
+    assert priceline["start_date"] == "2026-04-01"
     assert "centralized AI/ML platform" in priceline["description"]
     assert "weeks to days" in priceline["description"]
 
     loblaw = next(e for e in experiences if e["id"] == "loblaw-digital")
     assert loblaw["position"] == "Staff ML Software Engineer"
+    assert loblaw["end_date"] == "2026-03-31"
     assert "15 million" in loblaw["description"]
+
+    zonetv = next(e for e in experiences if e["id"] == "zonetv")
+    assert zonetv["position"] == "ML Engineer"
 
 
 def test_publications():
