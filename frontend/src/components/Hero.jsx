@@ -22,7 +22,7 @@ function Hero({ data, onOpenResume }) {
         >
           PC Express ChatGPT app
         </a>
-        ), created <strong>Alfred</strong> (an enterprise multi-agent orchestration engine), and deployed LLM infrastructure processing 15M+ prompts weekly while building an in-house recommendation engine that drove $200K+/year in cost savings.
+        ), created <strong>Alfred</strong> (an enterprise multi-agent orchestration engine), and deployed LLM infrastructure processing 15M+ prompts weekly while building <strong>Helios Recos Engine</strong> (serving 500+ req/s across 30+ placements, saving $200K+/year).
       </p>
 
       <p className="about-social">

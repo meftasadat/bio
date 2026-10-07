@@ -36,6 +36,10 @@ def test_experience_content():
     assert loblaw["position"] == "Staff ML Software Engineer"
     assert loblaw["end_date"] == "2026-03-31"
     assert "15 million" in loblaw["description"]
+    assert "Helios Recos Engine" in loblaw["description"]
+    assert "500+ req/s" in loblaw["description"]
+    assert "p95 <100 ms" in loblaw["description"]
+    assert "Certona/Monetate" in loblaw["description"]
 
     zonetv = next(e for e in experiences if e["id"] == "zonetv")
     assert zonetv["position"] == "ML Engineer"
